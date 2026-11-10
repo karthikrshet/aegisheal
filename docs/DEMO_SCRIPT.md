@@ -11,3 +11,7 @@
 "Monitoring tools detect failures and send alerts, but a human still has to analyse logs and fix the problem. AegisHeal closes the loop: detect → analyse → recover → **verify** → learn."
 
 Show **About project** → objectives and the 7-step methodology.
+
+## 2. Architecture (1 min)
+
+Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **real separate processes** (show their PIDs on a service page), so crashes and rollbacks are real.
