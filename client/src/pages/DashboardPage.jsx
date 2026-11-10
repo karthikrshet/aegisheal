@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { Link, useOutletContext } from 'react-router-dom';
 import { FiActivity, FiAlertTriangle, FiCheckCircle, FiClock, FiCpu, FiServer, FiTrendingUp, FiZap } from 'react-icons/fi';
-import { PageHeader, Card, StatCard, Button, EmptyState, ErrorState, PageLoader } from '../components/ui/index.js';
+import { PageHeader, Card, StatCard, EmptyState, ErrorState, PageLoader } from '../components/ui/index.js';
 import { ServiceCard } from '../components/services/ServiceCard.jsx';
 import { PipelineFlow } from '../components/agent/PipelineFlow.jsx';
 import { ActivityFeed } from '../components/agent/ActivityFeed.jsx';
@@ -126,7 +126,7 @@ export default function DashboardPage() {
         </Card>
         <Card title="Agent activity" actions={<FiActivity color="var(--primary)" aria-hidden />}>
           <ActivityFeed items={agent?.activity || []} />
-          {!agent && <Button variant="ghost" size="sm">Loading…</Button>}
+          {!agent && <span className="muted small">Loading agent state…</span>}
         </Card>
       </div>
     </>
