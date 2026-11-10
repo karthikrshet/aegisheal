@@ -19,27 +19,18 @@ export function requireJsonForMutations(req, _res, next) {
 const limitHandler = (_req, res) =>
   res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many requests, please slow down and try again shortly.' } });
 
-export const apiLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  limit: 600,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  handler: limitHandler,
-});
-
-export const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000,
-  limit: 20,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  handler: (_req, res) =>
-    res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many login attempts. Try again in 15 minutes.' } }),
-});
-
-export const actionLimiter = rateLimit({
-  windowMs: 60 * 1000,
-  limit: 60,
-  standardHeaders: 'draft-7',
-  legacyHeaders: false,
-  handler: limitHandler,
-});
+/** Limiters are created per app instance so separate apps (e.g. tests) never share counters. */
+export function createLimiters() {
+  const base = { standardHeaders: 'draft-7', legacyHeaders: false, handler: limitHandler };
+  return {
+    api: rateLimit({ ...base, windowMs: 60 * 1000, limit: 600 }),
+    action: rateLimit({ ...base, windowMs: 60 * 1000, limit: 60 }),
+    login: rateLimit({
+      ...base,
+      windowMs: 15 * 60 * 1000,
+      limit: 20,
+      handler: (_req, res) =>
+        res.status(429).json({ error: { code: 'RATE_LIMITED', message: 'Too many login attempts. Try again in 15 minutes.' } }),
+    }),
+  };
+}
