@@ -83,3 +83,23 @@ curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/cha
 | PATCH · DELETE | `/users/:id` | A | `{ name?, role?, active? }` / delete (not yourself, not the last admin) |
 | POST | `/users/:id/reset-password` | A | `{ password }` |
 | GET | `/audit?actor=&action=&limit=&offset=` | A | Audit trail, newest first |
+
+## Live events (SSE)
+
+`GET /events` (V) — `text/event-stream`. Event types:
+
+| Event | Payload |
+|---|---|
+| `hello` | `{ user, at }` on connect |
+| `metrics` | `{ system, services: { [id]: sample } }` every monitor tick |
+| `incident` | full incident on every change |
+| `service` | service snapshot on status change |
+| `agent` | agent state / activity |
+| `log` | one log entry |
+| `settings` | new settings |
+| `audit` | audit entry (admins only) |
+
+```js
+const es = new EventSource('/api/events', { withCredentials: true });
+es.addEventListener('incident', (e) => console.log(JSON.parse(e.data).status));
+```
