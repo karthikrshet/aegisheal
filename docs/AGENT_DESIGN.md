@@ -70,3 +70,9 @@ Operators can approve (optionally choosing a different predefined action), rejec
 ## Safety
 
 All restrictions are listed in [AGENT_RESTRICTIONS.md](AGENT_RESTRICTIONS.md). The most important: the agent can **only** execute the 6 frozen, whitelisted actions; nothing (not even the LLM) can make it run arbitrary commands.
+
+## Extending the agent
+
+- New failure type → add a rule in `detection/rules.js` and a signature in `agent/knowledgeBase.js` (skill: `.claude/skills/add-failure-signature`).
+- New recovery action → add a file in `recovery/actions/`, register it in `actions/index.js` and `settings/defaults.js` (skill: `.claude/skills/add-recovery-action`).
+- New monitored service → add an entry in `services/registry.js` (any HTTP service exposing `/health` and `/metrics` can be adapted).
