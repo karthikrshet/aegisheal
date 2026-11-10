@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -32,6 +33,28 @@ const schema = z.object({
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
 });
 
+/**
+ * Development convenience: generate a strong secret once and keep it in the
+ * (git-ignored) data folder so sessions survive server restarts.
+ */
+function devSecret(dataDir) {
+  const file = path.join(dataDir, '.jwt-secret');
+  try {
+    const existing = fs.readFileSync(file, 'utf8').trim();
+    if (existing.length >= 64) return existing;
+  } catch {
+    /* not created yet */
+  }
+  const secret = crypto.randomBytes(48).toString('hex');
+  try {
+    fs.mkdirSync(dataDir, { recursive: true });
+    fs.writeFileSync(file, secret, { mode: 0o600 });
+  } catch {
+    /* read-only disk: fall back to a per-process secret */
+  }
+  return secret;
+}
+
 function loadConfig(env = process.env) {
   const parsed = schema.safeParse(env);
   if (!parsed.success) {
@@ -46,8 +69,7 @@ function loadConfig(env = process.env) {
     if (c.NODE_ENV === 'production') {
       throw new Error('JWT_SECRET must be set to 32+ random characters in production.');
     }
-    // Development convenience: a random secret per process (sessions reset on restart).
-    jwtSecret = crypto.randomBytes(48).toString('hex');
+    jwtSecret = c.NODE_ENV === 'test' ? crypto.randomBytes(48).toString('hex') : devSecret(path.resolve(SERVER_ROOT, c.DATA_DIR));
   }
 
   return Object.freeze({

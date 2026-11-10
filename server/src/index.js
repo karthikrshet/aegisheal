@@ -8,7 +8,7 @@ setLogLevel(config.logLevel);
 
 async function main() {
   if (config.jwtSecretGenerated) {
-    logger.warn('JWT_SECRET missing or weak: using a temporary random secret (sessions reset on restart). Set it in server/.env');
+    logger.warn('JWT_SECRET not set in server/.env: using an auto-generated development secret (data/.jwt-secret). Run `npm run setup` to create a proper .env');
   }
   const engine = createEngine(config);
   await ensureAdmin(engine.users, config.admin);
