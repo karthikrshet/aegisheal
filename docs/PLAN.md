@@ -2,7 +2,6 @@
 
 > **Agentic AI-Enabled Autonomous Framework for Intelligent Software Fault Recovery and Resilience**
 
-
 ## 1. Product vision (Product Manager)
 
 Traditional monitoring tools *detect and alert*. AegisHeal goes further: it **detects, diagnoses,
@@ -14,7 +13,7 @@ recovers and verifies** on its own, then records every incident so the next reco
 |---|---|---|
 | DevOps / SRE engineer | Fewer 3 a.m. pages | Autonomous recovery with a full audit trail |
 | Developer | Fast root cause | AI analysis of logs + metrics with confidence score |
-| Team lead / examiner | Proof it works | Live dashboard, MTTR and success-rate analytics |
+| Team lead / reviewer | Proof it works | Live dashboard, MTTR and success-rate analytics |
 
 **Success metrics:** MTTR < 15 s for demo faults, recovery success rate > 90 %, zero unsafe actions
 (every action passes guardrails), 100 % of incidents recorded.
@@ -84,4 +83,4 @@ Live progress is tracked in `docs/PROGRESS.md`.
 | LLM suggests unsafe action | Guardrails whitelist — LLM output can only pick from predefined actions |
 | Recovery loop (flapping) | Cooldowns, max attempts, circuit breaker, escalation |
 | Data corruption on crash | Atomic write (temp file + rename) with debounced flush |
-| Port clashes on examiner's PC | All ports configurable through `.env` |
+| Port clashes on another PC | All ports configurable through `.env` |

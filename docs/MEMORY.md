@@ -11,7 +11,7 @@ Durable knowledge about AegisHeal for future maintainers and AI assistants: deci
 | One active incident per service | Prevents two recoveries fighting over one service; extra symptoms are merged | `orchestrator.onServiceChecked` |
 | Local analyser is the default AI | Offline, deterministic, explainable; LLM optional and validated | `agent/analyzer.js` |
 | LLM can only pick from enums | Safety against hallucination / prompt injection in logs | `agent/llmAnalyzer.js` |
-| JSON store with atomic rename | Zero setup for examiners, crash-safe | `lib/store.js` |
+| JSON store with atomic rename | Zero setup for new users, crash-safe | `lib/store.js` |
 | SSE instead of WebSockets | One-way, cookie-auth friendly, works through Vite proxy | `routes/events.js` |
 | `API_PORT`, not `PORT` | Tools/IDEs export `PORT` for other apps and hijacked the API | `config/index.js` |
 
