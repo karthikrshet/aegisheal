@@ -302,3 +302,7 @@ More: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 | [docs/PROGRESS.md](docs/PROGRESS.md) | What is complete, verified and planned |
 | [docs/MEMORY.md](docs/MEMORY.md) | Project memory: decisions, gotchas and lessons learned |
 | [SECURITY.md](SECURITY.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [CHANGELOG.md](CHANGELOG.md) | Policies and history |
+
+## 🙏 Acknowledgements
+
+Literature that shaped the design: Schneider, Barker & Dobson (2015); Jeong & Shin (2026); Baqar, Khanda & Naqvi (2025); Zhang et al. (2025); Yazdanparast (2024); Rajput & Sikka (2019).
