@@ -51,3 +51,7 @@ The reply is parsed and validated with a strict zod schema. Any problem — no k
 2. `LearningModel.rank()` scores each: `0.4 × playbook prior + 0.6 × Laplace-smoothed success rate` for that (signature, action) pair.
 3. The first candidate that passes the guardrails is chosen (actions in cooldown are skipped).
 4. If guardrails require approval, the incident waits in `awaiting_approval`.
+
+## Learning
+
+After every attempt `learning.record(signature, action, success, recoveryMs)` updates the statistics. Over time an action that keeps failing for a signature drops below the next one in the ranking. The Playbooks page shows the live ranking and success rates; the Reports page shows action effectiveness.
