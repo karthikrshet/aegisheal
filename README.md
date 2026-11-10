@@ -6,7 +6,7 @@ AegisHeal is a self-healing platform: it **monitors** running services, **detect
 
 
 
-![stack](https://img.shields.io/badge/React-18-2563eb) ![stack](https://img.shields.io/badge/Node.js-20%2B-2563eb) ![tests](https://img.shields.io/badge/tests-170%2B%20passing-16a34a) ![license](https://img.shields.io/badge/license-MIT-64748b)
+![stack](https://img.shields.io/badge/React-18-2563eb) ![stack](https://img.shields.io/badge/Node.js-20%2B-2563eb) ![tests](https://img.shields.io/badge/tests-143%20passing-16a34a) ![license](https://img.shields.io/badge/license-MIT-64748b)
 
 ## ✨ Features
 
@@ -227,8 +227,8 @@ aegisheal/
 npm test
 ```
 
-- **Server (≈130 tests):** detection rules, analyser, guardrails, learning, store, auth, API security, and **real end-to-end tests** that crash / break real processes and assert the agent recovers them.
-- **Client (≈33 tests):** formatters, API client, permissions, UI components, pipeline, login.
+- **Server (110 tests):** detection rules, analyser, guardrails, learning, store, auth, API security, and **real end-to-end tests** that crash / break real processes and assert the agent recovers them.
+- **Client (33 tests):** formatters, API client, permissions, UI components, pipeline, login.
 
 See [docs/TESTING.md](docs/TESTING.md).
 
