@@ -73,3 +73,15 @@ Only one active incident exists per service. New symptoms on the same service ar
 ## Real-time updates
 
 `lib/eventBus.js` is a process-wide emitter. Components publish `metrics`, `incident`, `service`, `agent`, `log`, `settings` and `audit` events; `routes/events.js` streams them to every signed-in browser over SSE (max 50 clients, 15 s heartbeat). The client keeps a single `EventSource` in `LiveContext` and components subscribe with `useLiveEvent(type, fn)`.
+
+## Why these choices
+
+| Decision | Reason |
+|---|---|
+| Real child processes instead of simulated numbers | Faults and recoveries are genuine (a crash really kills a PID; a rollback really redeploys) — the strongest proof for the methodology. |
+| JSON file store | Zero installation for examiners; atomic writes keep it safe. The store is isolated behind one class, so a real DB can replace it. |
+| SSE instead of WebSockets | One-way updates are all the UI needs; works through the Vite proxy and with cookie auth, no extra dependency. |
+| Local analyser by default | Works offline and deterministically; the LLM is an optional enhancement, never a dependency. |
+| No auto-restart in the supervisor | Every recovery must go through analysis, guardrails, verification and the audit trail. |
+
+See also [AGENT_DESIGN.md](AGENT_DESIGN.md) and [API.md](API.md).
