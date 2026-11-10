@@ -3,6 +3,7 @@ import { FiInfo } from 'react-icons/fi';
 import { PageHeader, Card, ErrorState, PageLoader } from '../components/ui/index.js';
 import { ChaosPanel } from '../components/services/ChaosPanel.jsx';
 import { HealthBadge } from '../components/services/HealthBadge.jsx';
+import { GuidedDemo } from '../components/services/GuidedDemo.jsx';
 import { StatusBadge } from '../components/incidents/StatusBadge.jsx';
 import { useApi } from '../hooks/useApi.js';
 import { useThrottledReload } from '../hooks/useThrottledReload.js';
@@ -24,7 +25,11 @@ export default function ChaosLabPage() {
 
   return (
     <>
-      <PageHeader title="Chaos lab" description="Inject real faults into real processes and watch the agent detect, diagnose, recover and verify — live." />
+      <PageHeader
+        title="Chaos lab"
+        description="Inject real faults into real processes and watch the agent detect, diagnose, recover and verify — live."
+        actions={<GuidedDemo disabled={!isOperator(user)} onDone={() => services.reload({ silent: true })} />}
+      />
       <div className="alert alert-info" style={{ marginBottom: 16 }}>
         <FiInfo aria-hidden />
         <div>
