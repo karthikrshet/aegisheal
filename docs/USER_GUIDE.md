@@ -55,3 +55,7 @@ Choose 24 h / 7 / 30 days: incident trend with average MTTR, distribution by fai
 - **Users** — add users, change roles, disable / enable, reset passwords, delete. You cannot demote or delete yourself or the last admin.
 - **Audit log** — who did what and when (logins, chaos, recoveries, approvals, settings).
 - **Settings** — detection thresholds, guardrails, allowed actions and the AI engine. Values are validated; invalid fields are highlighted and the save button is disabled.
+
+## Profile
+
+Click your avatar (top right) to see your account and change your password. Changing it signs out your other sessions.
