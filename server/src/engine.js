@@ -33,6 +33,9 @@ export function createEngine(config, { inMemory = false, definitions = SERVICE_D
   const monitor = new Monitor({ supervisor, settings, intervalMs: config.monitorIntervalMs });
   const agent = new AgentOrchestrator({ supervisor, monitor, logStore, store, incidents, settings, guardrails, learning, audit, config });
   monitor.onAnomalies = (serviceId, anomalies) => agent.onServiceChecked(serviceId, anomalies);
+  supervisor.on('status', (snap) => {
+    if (snap.status === 'starting') monitor.markBaseline(snap.id);
+  });
 
   // Incidents left "in progress" by a previous crash/stop cannot be resumed safely.
   for (const inc of store.list('incidents')) {
