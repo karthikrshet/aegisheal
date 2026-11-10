@@ -51,3 +51,19 @@ Open http://localhost:4000. Data is kept in the `aegis-data` volume. The image r
 - [ ] `LOG_LEVEL=info` (use `debug` only while troubleshooting).
 - [ ] Optional: `AI_PROVIDER=claude` with `ANTHROPIC_API_KEY` stored only in the server environment.
 - [ ] Ports `SERVICE_BASE_PORT … +2` are free on the host (demo services bind to 127.0.0.1 only).
+
+## Upgrading
+
+```bash
+git pull
+```
+
+```bash
+npm ci
+```
+
+```bash
+npm start
+```
+
+Data files are forward-compatible; incidents that were mid-recovery when the server stopped are marked *escalated* on start-up.
