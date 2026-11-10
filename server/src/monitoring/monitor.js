@@ -20,6 +20,7 @@ export class Monitor {
     this.intervalMs = intervalMs;
     this.onAnomalies = onAnomalies || (() => {});
     this.samples = new Map();
+    this.baselines = new Map(); // serviceId -> ts; detection ignores samples taken before it
     this.system = new RingBuffer(HISTORY);
     this.timer = null;
     this.ticking = false;
@@ -30,6 +31,19 @@ export class Monitor {
   history(serviceId) {
     if (!this.samples.has(serviceId)) this.samples.set(serviceId, new RingBuffer(HISTORY));
     return this.samples.get(serviceId);
+  }
+
+  /**
+   * Start a fresh detection window (after a restart or a verified recovery) so
+   * stale symptoms from before the fix can never re-open an incident.
+   */
+  markBaseline(serviceId) {
+    this.baselines.set(serviceId, Date.now());
+  }
+
+  detectionWindow(serviceId) {
+    const since = this.baselines.get(serviceId) || 0;
+    return this.history(serviceId).last(10).filter((s) => s.ts > since);
   }
 
   async probe(serviceId) {
@@ -55,7 +69,7 @@ export class Monitor {
           const anomalies = detectAnomalies({
             serviceId: id,
             serviceName: proc.name,
-            samples: this.history(id).last(10),
+            samples: this.detectionWindow(id),
             process: proc,
             thresholds,
           });
