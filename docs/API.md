@@ -24,3 +24,19 @@ curl -c cookies.txt -H "Content-Type: application/json" \
   -d '{"email":"admin@aegisheal.local","password":"Admin@12345"}' \
   http://localhost:4000/api/auth/login
 ```
+
+## Services
+
+| Method | Path | Role | Description |
+|---|---|---|---|
+| GET | `/services` | V | All services with health, latest sample, uptime %, active incident |
+| GET | `/services/catalog` | V | Chaos faults and recovery actions (id, name, description, risk) |
+| GET | `/services/:id?points=60` | V | One service with metric history and last 10 deployments |
+| POST | `/services/:id/actions/:actionId` | O | Run a predefined recovery action manually |
+| POST | `/services/:id/chaos/:fault` | O | Inject a fault: `crash`, `memory-leak`, `cpu-spike`, `latency`, `dependency-loss`, `job-failure`, `bad-deploy` |
+| POST | `/services/:id/deploy` | O | `{ version: "1.2.3" }` |
+| POST | `/services/:id/start` · `/stop` | A | Lifecycle (stopped services are ignored by the agent) |
+
+```bash
+curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/chaos/crash
+```
