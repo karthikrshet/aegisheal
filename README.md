@@ -145,3 +145,16 @@ Wait for `AegisHeal API listening on http://localhost:4000` and `Local: http://l
 6. Check **Reports** for MTTR, success rate and action effectiveness, and **Playbooks** for what the agent learned.
 
 A full viva / presentation script is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
+
+## 🧰 Everyday commands
+
+| Command | What it does |
+|---|---|
+| `npm run dev` | Start API (port 4000) and dashboard (port 5173) with auto-reload |
+| `npm test` | Run all server and client tests |
+| `npm run lint` | Syntax / import checks for server and client |
+| `npm run build` | Build the optimised dashboard into `client/dist` |
+| `npm start` | Build, then serve everything from one port (http://localhost:4000) |
+| `npm run seed` | (Re)create demo accounts — safe to run again |
+| `npm run setup` | Create `server/.env` if it does not exist |
+| `npm run reset-data -- --yes` | Delete all incidents, users and settings (stop the app first) |
