@@ -49,3 +49,9 @@ All logs from services and the agent. Filter by source, level or text; **Pause**
 ## Reports
 
 Choose 24 h / 7 / 30 days: incident trend with average MTTR, distribution by failure type, root cause and service, estimated downtime avoided and the effectiveness of every action.
+
+## Administration (admin only)
+
+- **Users** — add users, change roles, disable / enable, reset passwords, delete. You cannot demote or delete yourself or the last admin.
+- **Audit log** — who did what and when (logins, chaos, recoveries, approvals, settings).
+- **Settings** — detection thresholds, guardrails, allowed actions and the AI engine. Values are validated; invalid fields are highlighted and the save button is disabled.
