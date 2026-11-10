@@ -23,3 +23,20 @@ AegisHeal is a self-healing platform: it **monitors** running services, **detect
 | **Chaos lab** | Inject 7 real faults (crash, leak, CPU spike, latency, dependency loss, failing jobs, bad deployment) or run a one-click guided demo. |
 | **Dashboard** | Clean white & blue React UI with live charts (Server-Sent Events), 7-step pipeline view, incident timeline, reports, CSV export. |
 | **Security** | JWT in httpOnly SameSite=Strict cookies, bcrypt, account lockout, RBAC (admin / operator / viewer), zod validation on every input, Helmet CSP, rate limiting, audit log. |
+
+## 🧭 How it works
+
+```
+ ┌──────────────┐   every 2 s   ┌──────────┐   ┌──────────┐   ┌──────────────┐
+ │ 1 Monitor    │ ────────────▶ │ 2 Detect │ ─▶│ 3 Collect│ ─▶│ 4 AI Analyze │
+ └──────────────┘               └──────────┘   └──────────┘   └──────┬───────┘
+        ▲                                                            ▼
+ ┌──────┴───────┐   healthy?    ┌──────────┐   ┌──────────────────────────────┐
+ │ 7 Verify     │ ◀──────────── │ 6 Recover│ ◀─│ 5 Decide (playbook+learning  │
+ └──────────────┘   no → next   └──────────┘   │   + guardrails / approval)   │
+        │           action                     └──────────────────────────────┘
+        ▼
+   Incident history  →  learning model  →  better decisions next time
+```
+
+Full details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/AGENT_DESIGN.md](docs/AGENT_DESIGN.md).
