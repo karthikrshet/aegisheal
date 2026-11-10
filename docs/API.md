@@ -52,3 +52,13 @@ curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/cha
 | POST | `/incidents/:id/reject` | O | `{ reason? }` |
 | POST | `/incidents/:id/resolve` | O | `{ note? }` — mark as manually resolved |
 | POST | `/incidents/:id/notes` | O | `{ text }` |
+
+## Agent
+
+| Method | Path | Role | Description |
+|---|---|---|---|
+| GET | `/agent` | V | Mode, paused, AI provider, monitor status, pending approvals, circuits, activity, stats |
+| PUT | `/agent/mode` | A | `{ mode: "autonomous" \| "supervised" \| "observe" }` |
+| POST | `/agent/pause` · `/agent/resume` | A | Pause / resume all agent actions |
+| POST | `/agent/circuits/:serviceId/reset` | A | Close a service's circuit breaker |
+| GET | `/agent/playbooks` | V | Signatures with ranked actions and learned statistics |
