@@ -306,3 +306,7 @@ More: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
 ## 🙏 Acknowledgements
 
 Literature that shaped the design: Schneider, Barker & Dobson (2015); Jeong & Shin (2026); Baqar, Khanda & Naqvi (2025); Zhang et al. (2025); Yazdanparast (2024); Rajput & Sikka (2019).
+
+## 📄 License
+
+[MIT](LICENSE) © 2026 Karthik Rajesh Shet
