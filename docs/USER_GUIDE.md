@@ -37,3 +37,7 @@ Choose **Autonomous**, **Supervised** or **Observe only** (admin), pause / resum
 ## Playbooks
 
 The agent's knowledge: each failure signature, its root cause and the ranked recovery actions with learned success rates and average recovery time.
+
+## Chaos lab
+
+Break things on purpose. Each button injects a real fault into a real process. **Run guided demo** injects three different failures at once. Viewers cannot inject faults.
