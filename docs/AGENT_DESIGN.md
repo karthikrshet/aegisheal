@@ -55,3 +55,14 @@ The reply is parsed and validated with a strict zod schema. Any problem — no k
 ## Learning
 
 After every attempt `learning.record(signature, action, success, recoveryMs)` updates the statistics. Over time an action that keeps failing for a signature drops below the next one in the ranking. The Playbooks page shows the live ranking and success rates; the Reports page shows action effectiveness.
+
+## Human-in-the-loop
+
+| Mode | Behaviour |
+|---|---|
+| Autonomous | Acts on its own when guardrails pass; asks for approval on low confidence or high-risk actions |
+| Supervised | Always proposes and waits for an operator |
+| Observe | Detects and diagnoses only; incident stays `open` with the recommendation |
+| Paused (admin switch) | Same as observe, regardless of mode |
+
+Operators can approve (optionally choosing a different predefined action), reject, add notes or mark resolved. Approving an escalated incident resets its service's circuit breaker.
