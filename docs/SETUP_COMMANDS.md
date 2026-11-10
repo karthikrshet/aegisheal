@@ -134,3 +134,14 @@ npm run seed
 ```bash
 npm run dev
 ```
+
+## After installation
+
+| Goal | Command |
+|---|---|
+| Start again later | `npm run dev` (inside the project folder) |
+| Stop | `Ctrl + C` |
+| Run all tests | `npm test` |
+| Production mode (one port, :4000) | `npm start` |
+| Get the latest code | `git pull` then `npm install` |
+| Start from a clean database | `npm run reset-data -- --yes` then `npm run seed` |
