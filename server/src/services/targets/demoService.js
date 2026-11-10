@@ -143,6 +143,7 @@ const admin = {
   },
   reconnect() {
     state.dependencyConnected = true;
+    state.requests = []; // old connection errors no longer describe the current state
     log('info', `Reconnected to ${DEPENDENCY}: pool healthy (10/10 connections)`);
     return { dependency: 'connected' };
   },
