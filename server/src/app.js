@@ -7,7 +7,7 @@ import cookieParser from 'cookie-parser';
 import { SERVER_ROOT } from './config/index.js';
 import { requestId } from './middleware/requestId.js';
 import { authenticate } from './middleware/auth.js';
-import { apiLimiter, requireJsonForMutations } from './middleware/security.js';
+import { createLimiters, requireJsonForMutations } from './middleware/security.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
 import { healthRoutes } from './routes/health.js';
 import { authRoutes } from './routes/auth.js';
@@ -54,15 +54,16 @@ export function createApp(engine) {
   app.use(express.json({ limit: '100kb' }));
   app.use(cookieParser());
 
+  const limiters = createLimiters();
   const api = express.Router();
-  api.use(apiLimiter);
+  api.use(limiters.api);
   api.use(requireJsonForMutations);
   api.use('/health', healthRoutes(engine));
-  api.use('/auth', authRoutes(engine));
+  api.use('/auth', authRoutes(engine, limiters));
 
   // Everything below requires a signed-in user.
   api.use(authenticate(engine.users, config.jwtSecret));
-  api.use('/services', serviceRoutes(engine));
+  api.use('/services', serviceRoutes(engine, limiters));
   api.use('/incidents', incidentRoutes(engine));
   api.use('/agent', agentRoutes(engine));
   api.use('/metrics', metricsRoutes(engine));

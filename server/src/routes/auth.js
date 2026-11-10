@@ -2,18 +2,17 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { validate } from '../middleware/validate.js';
 import { authenticate } from '../middleware/auth.js';
-import { loginLimiter } from '../middleware/security.js';
 import { COOKIE_NAME, cookieOptions, signToken } from '../auth/tokens.js';
 
 const loginSchema = z.object({ email: z.string().trim().email().max(254), password: z.string().min(1).max(128) }).strict();
 const changeSchema = z.object({ currentPassword: z.string().min(1).max(128), newPassword: z.string().min(8).max(128) }).strict();
 
-export function authRoutes(engine) {
+export function authRoutes(engine, limiters) {
   const { users, audit, config } = engine;
   const r = Router();
   const auth = authenticate(users, config.jwtSecret);
 
-  r.post('/login', loginLimiter, validate({ body: loginSchema }), async (req, res, next) => {
+  r.post('/login', limiters.login, validate({ body: loginSchema }), async (req, res, next) => {
     try {
       const user = await users.authenticate(req.body.email, req.body.password);
       const token = signToken(user, { secret: config.jwtSecret, expiresIn: config.jwtExpiresIn });

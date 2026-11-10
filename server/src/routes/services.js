@@ -2,7 +2,6 @@ import { Router } from 'express';
 import { z } from 'zod';
 import { validate } from '../middleware/validate.js';
 import { requireRole } from '../middleware/auth.js';
-import { actionLimiter } from '../middleware/security.js';
 import { CHAOS_FAULTS } from '../services/registry.js';
 import { ACTIONS, describeActions } from '../recovery/actions/index.js';
 import { executeAction } from '../recovery/executor.js';
@@ -14,7 +13,8 @@ const faultParams = idParam.extend({ fault: z.enum(CHAOS_FAULTS.map((f) => f.id)
 const deploySchema = z.object({ version: z.string().regex(/^\d+\.\d+\.\d+([-.][\w.]+)?$/, 'Version must look like 1.2.3') }).strict();
 const historyQuery = z.object({ points: z.coerce.number().int().min(1).max(300).default(60) });
 
-export function serviceRoutes(engine) {
+export function serviceRoutes(engine, limiters) {
+  const actionLimiter = limiters.action;
   const { supervisor, monitor, incidents, audit, logStore } = engine;
   const r = Router();
 
