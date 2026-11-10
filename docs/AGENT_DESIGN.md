@@ -66,3 +66,7 @@ After every attempt `learning.record(signature, action, success, recoveryMs)` up
 | Paused (admin switch) | Same as observe, regardless of mode |
 
 Operators can approve (optionally choosing a different predefined action), reject, add notes or mark resolved. Approving an escalated incident resets its service's circuit breaker.
+
+## Safety
+
+All restrictions are listed in [AGENT_RESTRICTIONS.md](AGENT_RESTRICTIONS.md). The most important: the agent can **only** execute the 6 frozen, whitelisted actions; nothing (not even the LLM) can make it run arbitrary commands.
