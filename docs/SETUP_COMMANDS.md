@@ -52,3 +52,46 @@ npm run dev
 ```
 
 > If PowerShell says *running scripts is disabled*, run `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once, or use **Command Prompt** — the same commands work there.
+
+## macOS (Terminal)
+
+```bash
+# 1. Install Homebrew-managed Node.js if `node -v` fails
+brew install node@20
+```
+
+```bash
+node -v
+```
+
+```bash
+git --version
+```
+
+```bash
+cd ~/Documents
+```
+
+```bash
+git clone https://github.com/<your-username>/aegisheal.git
+```
+
+```bash
+cd aegisheal
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run setup
+```
+
+```bash
+npm run seed
+```
+
+```bash
+npm run dev
+```
