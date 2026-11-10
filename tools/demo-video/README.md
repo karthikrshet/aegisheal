@@ -1,6 +1,6 @@
 # Demo video generator
 
-Re-creates `media/AegisHeal-Demo.mp4`: a 1080p, ~3-minute cinematic walkthrough with real navigation of the running app, a neural narrator voice (Microsoft *Andrew Multilingual*, not a default system voice), lower-third captions, an animated cursor and an original synthesised soundtrack that ducks under the voice.
+Re-creates the demo video (`media/AegisHeal-Demo.mp4`; a compressed copy is committed as `docs/media/aegisheal-demo.mp4`): a 1080p, ~3-minute cinematic walkthrough with real navigation of the running app, a neural narrator voice (Microsoft *Andrew Multilingual*, not a default system voice), lower-third captions, an animated cursor and an original synthesised soundtrack that ducks under the voice.
 
 ## Requirements
 
@@ -47,4 +47,4 @@ python -m playwright install chromium
 | `music.py` | original score: pads, sub bass, arpeggio, heartbeat, risers |
 | `render.py` | ffmpeg mix (voice ducking, limiter) and 1080p H.264 encode |
 
-Generated files (`audio/`, `raw/`, `marks.json`, `music.wav`) and `media/` are not committed.
+Generated files (`audio/`, `raw/`, `marks.json`, `music.wav`) and the full-quality `media/` render are not committed. To refresh the README copy: `ffmpeg -i media/AegisHeal-Demo.mp4 -c:v libx264 -crf 27 -vf scale=1600:900 -c:a aac -b:a 128k -movflags +faststart docs/media/aegisheal-demo.mp4`.

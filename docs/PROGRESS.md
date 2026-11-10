@@ -31,7 +31,7 @@ Overall completion: **100 % of synopsis scope** + extra features. Legend: ✅ do
 | M8 | React dashboard (white & blue, react-icons) | ✅ |
 | M9 | Tests: 110 server + 33 client | ✅ |
 | M10 | Docs, setup script, Docker, CI | ✅ (Docker/CI 🟡 — files written, not executed on this machine) |
-| M11 | Cinematic demo video (1080p, neural narrator, original score) | ✅ `media/AegisHeal-Demo.mp4`, generator in `tools/demo-video` |
+| M11 | Cinematic demo video (1080p, neural narrator, original score) | ✅ `docs/media/aegisheal-demo.mp4` (linked in README), generator in `tools/demo-video` |
 
 ## Verification log
 
