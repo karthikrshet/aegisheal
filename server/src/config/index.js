@@ -8,7 +8,10 @@ import { z } from 'zod';
 const here = path.dirname(fileURLToPath(import.meta.url));
 export const SERVER_ROOT = path.resolve(here, '..', '..');
 
-dotenv.config({ path: path.join(SERVER_ROOT, '.env') });
+// server/.env wins; a .env in the repository root is also read (handy for Docker Compose users).
+// Real environment variables always take precedence over both files.
+dotenv.config({ path: path.join(SERVER_ROOT, '.env'), quiet: true });
+dotenv.config({ path: path.join(SERVER_ROOT, '..', '.env'), quiet: true });
 
 const toInt = (fallback) =>
   z.preprocess((v) => (v === undefined || v === '' ? fallback : Number(v)), z.number().int());
