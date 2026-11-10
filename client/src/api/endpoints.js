@@ -49,7 +49,7 @@ export const logsApi = {
 };
 
 export const reportsApi = {
-  summary: (days = 7) => api.get(`/reports/summary${qs({ days })}`),
+  summary: (days = 7) => api.get(`/reports/summary${qs({ days, tz: -new Date().getTimezoneOffset() })}`),
 };
 
 export const settingsApi = {
