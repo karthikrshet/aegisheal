@@ -45,3 +45,15 @@ AegisHeal is a Node.js monorepo with two npm workspaces: `server` (API + autonom
 | Step 7 Verification | `verification/verifier.js` | N consecutive fully healthy probes |
 | History | `incidents/incidentRepository.js`, `audit/auditService.js` | Incidents with steps + timeline; audit trail |
 | Persistence | `lib/store.js` | In-memory JSON documents, debounced atomic flush, corruption backup, caps |
+
+## Incident lifecycle
+
+```
+detected ─▶ analyzing ─┬─▶ recovering ─▶ verifying ─┬─▶ resolved
+                       │        ▲                   └─▶ (next action) ─▶ … ─▶ escalated
+                       ├─▶ awaiting_approval ─(approve)─┘     (reject) ─▶ rejected
+                       └─▶ open (observe / paused) ─(approve)─▶ recovering
+open / escalated / awaiting_approval ──(service healthy 3 checks)──▶ resolved (self-recovered)
+```
+
+Only one active incident exists per service. New symptoms on the same service are merged into it, which prevents conflicting recoveries.
