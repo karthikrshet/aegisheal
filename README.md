@@ -4,9 +4,23 @@
 
 AegisHeal is a self-healing platform: it **monitors** running services, **detects** failures, **collects** logs and metrics, lets an **AI agent analyse** the root cause, **decides** on a safe predefined recovery action, **executes** it through DevOps automation (restart, rollback, clear cache, reconnect, retry, throttle) and **verifies** that the service is healthy again. Every incident is stored so the agent learns which actions work best.
 
+![stack](https://img.shields.io/badge/React-18-2563eb) ![stack](https://img.shields.io/badge/Node.js-20%2B-2563eb) ![tests](https://img.shields.io/badge/tests-143%20passing-16a34a) ![license](https://img.shields.io/badge/license-MIT-64748b) [![repo](https://img.shields.io/badge/GitHub-karthikrshet%2Faegisheal-0f172a?logo=github)](https://github.com/karthikrshet/aegisheal)
 
+## 🎥 Demo video
 
-![stack](https://img.shields.io/badge/React-18-2563eb) ![stack](https://img.shields.io/badge/Node.js-20%2B-2563eb) ![tests](https://img.shields.io/badge/tests-143%20passing-16a34a) ![license](https://img.shields.io/badge/license-MIT-64748b)
+[![Watch the AegisHeal demo](docs/media/demo-poster.jpg)](docs/media/aegisheal-demo.mp4)
+
+**[▶ Watch the 3-minute demo](docs/media/aegisheal-demo.mp4)** — a narrated walkthrough of the real app: live monitoring, three failures injected at once and healed automatically, the AI's explainable root-cause analysis, human approval in supervised mode, learning playbooks and reports. (Click the image; GitHub plays the video in the browser. Regenerate it with [tools/demo-video](tools/demo-video/README.md).)
+
+## 📸 Screenshots
+
+| Live dashboard | Chaos lab — guided demo |
+|---|---|
+| ![Dashboard](docs/media/dashboard.jpg) | ![Chaos lab](docs/media/chaos.jpg) |
+| **Autonomous recovery** | **Explainable incident analysis** |
+| ![Recovery](docs/media/recovery.jpg) | ![Incident](docs/media/incident.jpg) |
+| **Human-in-the-loop approval** | |
+| ![Approval](docs/media/approval.jpg) | |
 
 ## ✨ Features
 
@@ -56,7 +70,7 @@ Free ports used by default: **5173** (dashboard), **4000** (API), **5101-5103** 
 ## 🚀 Quick start (5 commands)
 
 ```bash
-git clone https://github.com/<your-username>/aegisheal.git
+git clone https://github.com/karthikrshet/aegisheal.git
 cd aegisheal
 npm run bootstrap
 npm run dev
@@ -85,7 +99,7 @@ You should see `v20.x` (or newer) and a git version. If not, install them from t
 **2. Download the project**
 
 ```bash
-git clone https://github.com/<your-username>/aegisheal.git
+git clone https://github.com/karthikrshet/aegisheal.git
 ```
 
 ```bash
@@ -146,7 +160,7 @@ Wait for `AegisHeal API listening on http://localhost:4000` and `Local: http://l
 
 A full viva / presentation script is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
 
-🎥 **Demo video:** a 3-minute cinematic walkthrough (narrated, with soundtrack) can be regenerated with [tools/demo-video](tools/demo-video/README.md). Upload the rendered `media/AegisHeal-Demo.mp4` to YouTube or GitHub Releases rather than committing it.
+Prefer watching first? See the [demo video](#-demo-video).
 
 ## 🧰 Everyday commands
 
@@ -250,23 +264,23 @@ docker compose up --build
 
 See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
 
-## 🌐 Publish to your own GitHub
+## 🌐 Repository & contributing
 
-Only source code and docs are committed. Secrets (`.env`), the database (`server/data`), `node_modules` and build output are excluded by [`.gitignore`](.gitignore).
+Source: **https://github.com/karthikrshet/aegisheal**
+
+Only source code, docs and the demo media are committed. Secrets (`.env`), the database (`server/data`), `node_modules` and build output are excluded by [`.gitignore`](.gitignore).
+
+Get the latest version:
 
 ```bash
-git remote add origin https://github.com/<your-username>/aegisheal.git
+git pull
 ```
 
 ```bash
-git branch -M main
+npm install
 ```
 
-```bash
-git push -u origin main
-```
-
-Before pushing, double-check nothing private is staged:
+To contribute, fork the repository, create a branch, run `npm run lint` and `npm test`, and open a pull request — see [CONTRIBUTING.md](CONTRIBUTING.md). Before committing, check nothing private is staged:
 
 ```bash
 git status
