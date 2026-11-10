@@ -232,6 +232,7 @@ export class AgentOrchestrator {
     this.learning.record(incident.analysis.signatureId, actionId, true, mttrMs);
     this.guardrails.end(incident.serviceId, true);
     this.supervisor.markGood(incident.serviceId);
+    this.monitor.markBaseline(incident.serviceId);
     this.incidents.update(incident, { status: 'resolved', resolvedAt, mttrMs, resolution: `Recovered by "${action.name}"`, escalation: null });
     this.incidents.log(incident, `Resolved in ${(mttrMs / 1000).toFixed(1)} s — service verified healthy`);
     this.note(`${incident.number} resolved in ${(mttrMs / 1000).toFixed(1)} s by ${action.name}`);
