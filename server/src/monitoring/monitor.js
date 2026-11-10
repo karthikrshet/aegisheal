@@ -10,7 +10,8 @@ const HISTORY = 300; // ~10 minutes at 2 s interval
 
 /**
  * Continuous monitoring loop (methodology Step 1) that feeds the detector (Step 2).
- * Calls `onAnomalies(serviceId, anomalies)` whenever a service shows symptoms.
+ * Calls `onAnomalies(serviceId, anomalies)` for every service on every tick
+ * (an empty array means the service looked healthy).
  */
 export class Monitor {
   constructor({ supervisor, settings, intervalMs, onAnomalies }) {
@@ -67,13 +68,12 @@ export class Monitor {
         system: sys,
         services: Object.fromEntries(results.map((r) => [r.id, r.sample])),
       });
+      // Report every service (healthy ones too) so the agent can auto-close incidents.
       for (const r of results) {
-        if (r.anomalies.length) {
-          try {
-            await this.onAnomalies(r.id, r.anomalies);
-          } catch (err) {
-            log.error('anomaly handler failed', { service: r.id, error: err.message });
-          }
+        try {
+          await this.onAnomalies(r.id, r.anomalies);
+        } catch (err) {
+          log.error('anomaly handler failed', { service: r.id, error: err.message });
         }
       }
     } catch (err) {
