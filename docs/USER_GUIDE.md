@@ -41,3 +41,7 @@ The agent's knowledge: each failure signature, its root cause and the ranked rec
 ## Chaos lab
 
 Break things on purpose. Each button injects a real fault into a real process. **Run guided demo** injects three different failures at once. Viewers cannot inject faults.
+
+## Live logs
+
+All logs from services and the agent. Filter by source, level or text; **Pause** freezes the view without losing the stream.
