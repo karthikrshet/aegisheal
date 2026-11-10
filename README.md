@@ -158,3 +158,34 @@ A full viva / presentation script is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.m
 | `npm run seed` | (Re)create demo accounts — safe to run again |
 | `npm run setup` | Create `server/.env` if it does not exist |
 | `npm run reset-data -- --yes` | Delete all incidents, users and settings (stop the app first) |
+
+## ⚙️ Configuration
+
+All settings live in `server/.env` (created by `npm run setup` from [`server/.env.example`](server/.env.example)).
+
+| Variable | Default | Meaning |
+|---|---|---|
+| `API_PORT` | `4000` | Port of the API server |
+| `CLIENT_ORIGIN` | `http://localhost:5173` | Allowed browser origin(s), comma-separated |
+| `JWT_SECRET` | random (setup) | Secret for login tokens — **required** (32+ chars) in production |
+| `JWT_EXPIRES_IN` | `8h` | Session lifetime |
+| `DATA_DIR` | `./data` | Where the JSON database is stored |
+| `SERVICE_BASE_PORT` | `5101` | First of 3 ports for the demo services |
+| `MONITOR_INTERVAL_MS` | `2000` | Probe interval |
+| `AGENT_MODE` | `autonomous` | Initial mode: `autonomous`, `supervised`, `observe` |
+| `ADMIN_EMAIL` / `ADMIN_PASSWORD` | demo values | First admin account |
+| `AI_PROVIDER` | `local` | `local` (offline) or `claude` |
+| `ANTHROPIC_API_KEY` | empty | Needed only for `AI_PROVIDER=claude` |
+| `AI_MODEL` | `claude-opus-5-5` | Claude model used for analysis |
+| `COOKIE_SECURE` | `auto` | `auto` = secure cookies in production only |
+| `LOG_LEVEL` | `info` | `error`, `warn`, `info`, `debug` |
+
+Thresholds, guardrails, allowed actions and the AI provider can also be changed live from **Settings** in the dashboard (admin only).
+
+### Optional: enable Claude AI analysis
+
+1. Get an API key from https://console.anthropic.com
+2. In `server/.env` set `AI_PROVIDER=claude` and `ANTHROPIC_API_KEY=sk-ant-...`
+3. Restart `npm run dev`. The Agent page shows *Claude (Anthropic) + local second opinion*.
+
+If the key is missing, invalid, rate-limited or the response fails validation, AegisHeal silently falls back to the local engine — recovery never depends on the network.
