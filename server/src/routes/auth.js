@@ -16,7 +16,7 @@ export function authRoutes(engine, limiters) {
     try {
       const user = await users.authenticate(req.body.email, req.body.password);
       const token = signToken(user, { secret: config.jwtSecret, expiresIn: config.jwtExpiresIn });
-      res.cookie(COOKIE_NAME, token, cookieOptions(config.isProd));
+      res.cookie(COOKIE_NAME, token, cookieOptions(config.cookieSecure));
       audit.record({ actor: user.email, action: 'auth.login', ip: req.ip });
       res.json({ user: users.toPublic(user) });
     } catch (err) {
@@ -26,7 +26,7 @@ export function authRoutes(engine, limiters) {
   });
 
   r.post('/logout', (req, res) => {
-    res.clearCookie(COOKIE_NAME, { ...cookieOptions(config.isProd), maxAge: undefined });
+    res.clearCookie(COOKIE_NAME, { ...cookieOptions(config.cookieSecure), maxAge: undefined });
     res.json({ ok: true });
   });
 
@@ -35,7 +35,7 @@ export function authRoutes(engine, limiters) {
   r.post('/change-password', auth, validate({ body: changeSchema }), async (req, res, next) => {
     try {
       const user = await users.changePassword(req.user.id, req.body.currentPassword, req.body.newPassword);
-      res.cookie(COOKIE_NAME, signToken(user, { secret: config.jwtSecret, expiresIn: config.jwtExpiresIn }), cookieOptions(config.isProd));
+      res.cookie(COOKIE_NAME, signToken(user, { secret: config.jwtSecret, expiresIn: config.jwtExpiresIn }), cookieOptions(config.cookieSecure));
       audit.record({ actor: user.email, action: 'auth.password_changed', ip: req.ip });
       res.json({ ok: true });
     } catch (err) {

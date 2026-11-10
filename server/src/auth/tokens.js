@@ -17,11 +17,11 @@ export function verifyToken(token, secret) {
   }
 }
 
-export function cookieOptions(isProd) {
+export function cookieOptions(secure) {
   return {
     httpOnly: true,
     sameSite: 'strict',
-    secure: isProd,
+    secure: Boolean(secure),
     path: '/',
     maxAge: 1000 * 60 * 60 * 24,
   };

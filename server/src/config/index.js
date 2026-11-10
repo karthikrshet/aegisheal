@@ -31,6 +31,8 @@ const schema = z.object({
   ANTHROPIC_API_KEY: z.string().optional(),
   AI_MODEL: z.string().default('claude-opus-5-5'),
   LOG_LEVEL: z.enum(['error', 'warn', 'info', 'debug']).default('info'),
+  // Secure cookies need HTTPS. Defaults to true in production; set false for plain-HTTP LAN demos.
+  COOKIE_SECURE: z.enum(['true', 'false', 'auto']).default('auto'),
 });
 
 /**
@@ -92,6 +94,7 @@ function loadConfig(env = process.env) {
       model: c.AI_MODEL,
     },
     logLevel: c.LOG_LEVEL,
+    cookieSecure: c.COOKIE_SECURE === 'auto' ? c.NODE_ENV === 'production' : c.COOKIE_SECURE === 'true',
   });
 }
 
