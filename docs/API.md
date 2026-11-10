@@ -62,3 +62,12 @@ curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/cha
 | POST | `/agent/pause` · `/agent/resume` | A | Pause / resume all agent actions |
 | POST | `/agent/circuits/:serviceId/reset` | A | Close a service's circuit breaker |
 | GET | `/agent/playbooks` | V | Signatures with ranked actions and learned statistics |
+
+## Metrics, logs, reports
+
+| Method | Path | Role | Description |
+|---|---|---|---|
+| GET | `/metrics/system?points=60` | V | Host CPU / memory history |
+| GET | `/metrics/overview` | V | KPIs: healthy services, active incidents, MTTR, success & autonomous rates, availability |
+| GET | `/logs?source=&level=&search=&limit=` | V | Recent log lines (max 1 000) |
+| GET | `/reports/summary?days=7&tz=330` | V | Daily trend, distributions by type / service / severity / root cause, action effectiveness |
