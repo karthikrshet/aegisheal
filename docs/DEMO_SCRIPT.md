@@ -34,3 +34,8 @@ Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **
 3. Sidebar badge shows 1 pending approval → open it → *The agent proposes: Retry failed operations* → **Approve & run** → resolved.
 4. Show the guardrails list (whitelist, confidence, cooldown, circuit breaker, blast radius) and Settings.
 5. Switch back to **Autonomous**.
+
+## 5. Learning & reports (1 min)
+
+- **Playbooks**: success rates updated by the incidents just created.
+- **Reports**: MTTR, success rate, downtime avoided, action effectiveness; **Export CSV** = incident history.
