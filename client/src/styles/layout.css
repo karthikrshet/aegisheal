@@ -142,5 +142,6 @@
   }
   .topbar { padding: 0 16px; }
   .topbar .menu-btn { display: inline-flex; }
+  .hide-sm { display: none; }
   .content { padding: 18px 16px 40px; }
 }
