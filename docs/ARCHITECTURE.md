@@ -57,3 +57,15 @@ open / escalated / awaiting_approval ──(service healthy 3 checks)──▶ r
 ```
 
 Only one active incident exists per service. New symptoms on the same service are merged into it, which prevents conflicting recoveries.
+
+## Data model (JSON store)
+
+| Collection | Key fields |
+|---|---|
+| `users` | id, name, email, role, active, passwordHash, tokenVersion, failedLogins, lockedUntil |
+| `incidents` | number, serviceId, type, severity, status, steps[7], anomalies, context, analysis, decision, attempts[], approval, escalation, notes, timeline, mttrMs |
+| `auditLogs` | at, actor, action, target, detail, ip (capped at 5 000) |
+| `deployments` | serviceId, fromVersion, toVersion, kind (deploy/rollback), actor, at |
+| `learning` | `{ [signatureId]: { [actionId]: { attempts, successes, totalRecoveryMs } } }` |
+| `settings` | agentMode, thresholds, guardrails, allowedActions, ai |
+| `meta` | incidentCounter, agentPaused |
