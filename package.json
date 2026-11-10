@@ -2,13 +2,15 @@
   "name": "aegisheal",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "description": "AegisHeal - Agentic AI-Enabled Autonomous Framework for Intelligent Software Fault Recovery and Resilience",
   "workspaces": [
     "server",
     "client"
   ],
   "scripts": {
-    "setup": "npm install && npm run seed",
+    "setup": "node scripts/setup.js",
+    "bootstrap": "npm install && node scripts/setup.js && npm run seed",
     "seed": "npm run seed --workspace server",
     "dev": "concurrently -n server,client -c blue,cyan \"npm run dev --workspace server\" \"npm run dev --workspace client\"",
     "build": "npm run build --workspace client",
