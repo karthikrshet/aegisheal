@@ -26,3 +26,10 @@ Durable knowledge about AegisHeal for future maintainers and AI assistants: deci
 - **Without `JWT_SECRET`**, dev uses a secret persisted in `server/data/.jwt-secret`; production refuses to start.
 - **Seed while the server is stopped** — both write the same JSON file.
 - The guided demo injects 3 faults while `maxConcurrentRecoveries` is 2: the third waits — this is the blast-radius guardrail working, not a bug.
+
+## Conventions
+
+- Conventional commits (`feat|fix|docs|test|refactor|style|build|ci|chore(scope): message`), one logical change per commit, never empty.
+- Server: ESM, zod for every input, `AppError` helpers, no `console.log` (use `createLogger`).
+- Client: function components, `useApi` for data, `useLiveEvent` for realtime, tokens from `styles/tokens.css`, icons from `react-icons/fi`.
+- Tests next to the layer they cover: `server/tests/*.test.js`, `client/src/test/*`.
