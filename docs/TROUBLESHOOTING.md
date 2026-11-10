@@ -19,3 +19,16 @@
 | `Invalid environment configuration` | the message names the bad variable; compare with `server/.env.example` |
 | `JWT_SECRET must be set … in production` | run `npm run setup` or put a 48+ char random secret in `server/.env` |
 | All services **Down** right after start | ports 5101–5103 busy → change `SERVICE_BASE_PORT` |
+
+## Using the dashboard
+
+| Symptom | Fix |
+|---|---|
+| *Cannot reach the AegisHeal server* | the API process is not running or crashed — check the `[server]` lines in the terminal |
+| Logged out after every restart | `JWT_SECRET` keeps changing — run `npm run setup` once |
+| Badge shows **Reconnecting** | live stream dropped (laptop sleep, server restart); it reconnects automatically within 3 s |
+| *Too many login attempts* | wait 15 minutes, or restart the server in development |
+| *Account temporarily locked* | 5 wrong passwords — wait 15 minutes or have an admin reset the password |
+| Chaos buttons are greyed out | you are a viewer, or the service is stopped |
+| An incident stays **escalated** | the agent could not verify a fix; read the reason, fix manually and click *Mark as resolved*, or approve a different action |
+| Circuit breaker **open** | Agent control → Circuit breakers → **Reset** after fixing the cause |
