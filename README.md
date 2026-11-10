@@ -175,9 +175,53 @@ Prefer watching first? See the [demo video](#-demo-video).
 | `npm run setup` | Create `server/.env` if it does not exist |
 | `npm run reset-data -- --yes` | Delete all incidents, users and settings (stop the app first) |
 
-## ⚙️ Configuration
+## ⚙️ Configuration (your `.env`)
 
-All settings live in `server/.env` (created by `npm run setup` from [`server/.env.example`](server/.env.example)).
+AegisHeal reads its settings from a `.env` file. A ready-to-fill template is included: [`.env.example`](.env.example) (same as [`server/.env.example`](server/.env.example)). Your real `.env` is **never committed** (it is in `.gitignore`), so each person keeps their own secrets.
+
+**Option A — automatic (recommended):** creates `server/.env` with a strong random `JWT_SECRET`.
+
+```bash
+npm run setup
+```
+
+**Option B — manual:** copy the template, then open `.env` in any editor and fill in your values.
+
+Windows (PowerShell):
+
+```powershell
+Copy-Item .env.example .env
+```
+
+macOS / Linux:
+
+```bash
+cp .env.example .env
+```
+
+Generate your own secret for `JWT_SECRET`:
+
+```bash
+node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+```
+
+The `.env` can live in the project root or in `server/` (if both exist, `server/.env` wins; real environment variables override both). Restart `npm run dev` after editing it.
+
+Minimal `.env` example:
+
+```ini
+API_PORT=4000
+JWT_SECRET=paste-your-96-character-random-hex-here
+ADMIN_EMAIL=admin@aegisheal.local
+ADMIN_PASSWORD=ChooseAStrongPassword1
+AGENT_MODE=autonomous
+AI_PROVIDER=local
+# optional — only for Claude analysis:
+# AI_PROVIDER=claude
+# ANTHROPIC_API_KEY=sk-ant-...
+```
+
+All variables:
 
 | Variable | Default | Meaning |
 |---|---|---|
@@ -201,7 +245,7 @@ Thresholds, guardrails, allowed actions and the AI provider can also be changed 
 ### Optional: enable Claude AI analysis
 
 1. Get an API key from https://console.anthropic.com
-2. In `server/.env` set `AI_PROVIDER=claude` and `ANTHROPIC_API_KEY=sk-ant-...`
+2. In your `.env` set `AI_PROVIDER=claude` and `ANTHROPIC_API_KEY=sk-ant-...`
 3. Restart `npm run dev`. The Agent page shows *Claude (Anthropic) + local second opinion*.
 
 If the key is missing, invalid, rate-limited or the response fails validation, AegisHeal silently falls back to the local engine — recovery never depends on the network.
