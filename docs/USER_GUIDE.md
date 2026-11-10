@@ -29,3 +29,7 @@ Search by number, service or cause; filter by status and severity; export everyt
 - **Recovery attempts** — each action, its output and the verification probes.
 - **Collected evidence** — process state, metrics and the log excerpt the agent analysed.
 - **Timeline** and **Notes** for the team; **Mark as resolved** for fixes done outside AegisHeal.
+
+## Agent control
+
+Choose **Autonomous**, **Supervised** or **Observe only** (admin), pause / resume the agent, see pending approvals, circuit breakers (reset them after fixing a root cause) and the full list of guardrails.
