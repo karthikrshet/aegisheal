@@ -29,3 +29,14 @@ Last verified run: **143 tests passing** (server 110 in 13 files, client 33 in 6
 | `selfHealing.e2e.test.js` | **real processes**: crash → restart, bad deploy → rollback, dependency loss → reconnect, supervised approval, observe + reject + manual fix, CSV export, learning |
 
 The e2e suite starts the real `order-service` child process on port 5711 and needs ~15 s.
+
+## Client (Vitest + Testing Library + jsdom)
+
+| File | What it proves |
+|---|---|
+| `format.test.js` | duration / relative time / percent / humanize helpers |
+| `permissions.test.js` | client role checks mirror the server |
+| `apiClient.test.js` | JSON requests, typed errors, 401 handler, unreachable server message, query strings |
+| `components.test.jsx` | Button, ProgressBar, EmptyState, Modal (Escape), Toggle, badges, Sparkline |
+| `pipeline.test.jsx` | 7 steps, statuses and details render accessibly |
+| `login.test.jsx` | client validation, server error display, demo account fill |
