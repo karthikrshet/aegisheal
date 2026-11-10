@@ -36,7 +36,9 @@ export const RULES = [
       const failedHealth = window.filter((s) => s.statusCode >= 500 && s.statusCode !== 503).length;
       const latest = samples[samples.length - 1];
       const rate = latest?.errorRate ?? 0;
-      if (failedHealth >= n || (rate >= thresholds.errorRate && latest?.dependency === 'connected')) {
+      // The application error rate must stay high for n samples (not a single stale reading).
+      const sustainedRate = allMatch(samples, n, (s) => (s.errorRate ?? 0) >= thresholds.errorRate && s.dependency === 'connected');
+      if (failedHealth >= n || sustainedRate) {
         return {
           evidence: [
             `${failedHealth}/${window.length} recent health checks returned HTTP 5xx`,
