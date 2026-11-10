@@ -247,3 +247,25 @@ docker compose up --build
 ```
 
 See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
+
+## 🌐 Publish to your own GitHub
+
+Only source code and docs are committed. Secrets (`.env`), the database (`server/data`), `node_modules` and build output are excluded by [`.gitignore`](.gitignore).
+
+```bash
+git remote add origin https://github.com/<your-username>/aegisheal.git
+```
+
+```bash
+git branch -M main
+```
+
+```bash
+git push -u origin main
+```
+
+Before pushing, double-check nothing private is staged:
+
+```bash
+git status
+```
