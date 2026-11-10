@@ -1,0 +1,32 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+coverage/
+
+# Environment & secrets (never commit real keys)
+.env
+.env.*
+!.env.example
+
+# Runtime data (created automatically on first run)
+server/data/*
+!server/data/.gitkeep
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# Editor / OS
+.vscode/*
+!.vscode/extensions.json
+.idea/
+.DS_Store
+Thumbs.db
+*.swp
+
+# Local-only AI assistant settings
+.claude/settings.local.json
