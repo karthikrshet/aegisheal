@@ -43,3 +43,13 @@ Overall completion: **100 % of synopsis scope** + extra features. Legend: ✅ do
 | 2026-11-11 | Manual: guided demo (3 at once) | 3 different diagnoses + actions, all resolved < 3.2 s |
 | 2026-11-11 | Manual: supervised approval in UI | proposal → approve → verified, toast + badge |
 | 2026-11-11 | Production build on one port | SPA + API served, strict CSP, Secure cookie |
+
+## Bugs found & fixed during verification
+
+1. Leaked memory was not released quickly → repeated GC after cache clear.
+2. False "error spike" after reconnect → reset error window + require sustained rate.
+3. Stale pre-recovery samples re-opened incidents → detection baseline.
+4. A global `PORT` variable hijacked the API port → dedicated `API_PORT`.
+5. Sessions lost on every dev restart → persisted dev secret + `npm run setup`.
+6. Report days bucketed in UTC → viewer timezone offset.
+7. `upgrade-insecure-requests` would break plain-HTTP LAN deployments → only with HTTPS.
