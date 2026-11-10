@@ -32,3 +32,14 @@ Overall completion: **100 % of synopsis scope** + extra features. Legend: ✅ do
 | M9 | Tests: 110 server + 33 client | ✅ |
 | M10 | Docs, setup script, Docker, CI | ✅ (Docker/CI 🟡 — files written, not executed on this machine) |
 | M11 | Demo video | in progress |
+
+## Verification log
+
+| Date | Check | Result |
+|---|---|---|
+| 2026-11-11 | `npm test` | 143 / 143 passing |
+| 2026-11-11 | `npm run lint` | server 81 files OK, client 88 files resolve |
+| 2026-11-11 | Manual: every chaos fault | all auto-recovered (crash 2.4 s, rollback 2.5 s, leak 3.1 s, CPU 3.2 s, dependency 2.0 s, jobs 5.1 s, latency 2.7 s) |
+| 2026-11-11 | Manual: guided demo (3 at once) | 3 different diagnoses + actions, all resolved < 3.2 s |
+| 2026-11-11 | Manual: supervised approval in UI | proposal → approve → verified, toast + badge |
+| 2026-11-11 | Production build on one port | SPA + API served, strict CSP, Secure cookie |
