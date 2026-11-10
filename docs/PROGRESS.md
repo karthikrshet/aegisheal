@@ -53,3 +53,10 @@ Overall completion: **100 % of synopsis scope** + extra features. Legend: ✅ do
 5. Sessions lost on every dev restart → persisted dev secret + `npm run setup`.
 6. Report days bucketed in UTC → viewer timezone offset.
 7. `upgrade-insecure-requests` would break plain-HTTP LAN deployments → only with HTTPS.
+
+## Future ideas
+
+- 🔜 Plug-in adapters to monitor external apps (Docker containers, Kubernetes pods, systemd units).
+- 🔜 E-mail / Slack notifications on escalation.
+- 🔜 SQLite / PostgreSQL storage adapter for multi-instance deployments.
+- 🔜 Anomaly detection with statistical baselines instead of fixed thresholds.
