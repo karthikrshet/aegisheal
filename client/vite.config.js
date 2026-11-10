@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react';
 
 // In development the dashboard runs on :5173 and proxies /api to the server on :4000,
 // so the auth cookie stays same-origin and live events (SSE) work without CORS.
-const API_TARGET = process.env.VITE_API_TARGET || 'http://localhost:4000';
+const API_TARGET = process.env.VITE_API_TARGET || `http://localhost:${process.env.API_PORT || 4000}`;
 
 export default defineConfig({
   plugins: [react()],
