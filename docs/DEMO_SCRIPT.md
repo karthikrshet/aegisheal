@@ -39,3 +39,9 @@ Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **
 
 - **Playbooks**: success rates updated by the incidents just created.
 - **Reports**: MTTR, success rate, downtime avoided, action effectiveness; **Export CSV** = incident history.
+
+## 6. Quality (1 min)
+
+- `npm test` — unit, API-security and real end-to-end self-healing tests.
+- Security: RBAC (sign in as viewer → chaos buttons disabled), audit log, validated inputs.
+- Optional Claude analysis with strict validation and offline fallback.
