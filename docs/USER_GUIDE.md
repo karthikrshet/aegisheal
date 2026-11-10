@@ -45,3 +45,7 @@ Break things on purpose. Each button injects a real fault into a real process. *
 ## Live logs
 
 All logs from services and the agent. Filter by source, level or text; **Pause** freezes the view without losing the stream.
+
+## Reports
+
+Choose 24 h / 7 / 30 days: incident trend with average MTTR, distribution by failure type, root cause and service, estimated downtime avoided and the effectiveness of every action.
