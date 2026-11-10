@@ -44,3 +44,10 @@ Confidence = best score (capped at 0.97), reduced by 0.1 when the runner-up hypo
 - requires a single JSON object.
 
 The reply is parsed and validated with a strict zod schema. Any problem — no key, network error, rate limit, refusal, invalid JSON, unknown action — returns `null` and the local result is used. When both engines agree, confidence gets a small boost; the local result is always attached as a `secondOpinion`.
+
+## Decision making
+
+1. Candidate actions = the analysis playbook, minus actions already tried, minus actions disabled in Settings; `restart-service` is appended as a last resort.
+2. `LearningModel.rank()` scores each: `0.4 × playbook prior + 0.6 × Laplace-smoothed success rate` for that (signature, action) pair.
+3. The first candidate that passes the guardrails is chosen (actions in cooldown are skipped).
+4. If guardrails require approval, the incident waits in `awaiting_approval`.
