@@ -40,3 +40,15 @@ AegisHeal is a self-healing platform: it **monitors** running services, **detect
 ```
 
 Full details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/AGENT_DESIGN.md](docs/AGENT_DESIGN.md).
+
+## 📋 Prerequisites
+
+| Tool | Version | Check | Download |
+|---|---|---|---|
+| **Node.js** (includes npm) | 20 LTS or newer | `node -v` | https://nodejs.org (choose **LTS**) |
+| **Git** | any recent | `git --version` | https://git-scm.com/downloads |
+| A modern browser | Chrome, Edge, Firefox | — | — |
+
+Nothing else is needed: no database server, no Docker, no API key. The JSON database is created automatically.
+
+Free ports used by default: **5173** (dashboard), **4000** (API), **5101-5103** (demo services). All can be changed in `server/.env`.
