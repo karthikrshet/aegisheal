@@ -41,3 +41,13 @@ docker compose up --build -d
 Open http://localhost:4000. Data is kept in the `aegis-data` volume. The image runs as the unprivileged `node` user and has a health check on `/api/health`.
 
 > Serving over plain HTTP inside a lab network? Set `COOKIE_SECURE=false`, otherwise browsers drop the login cookie.
+
+## Production checklist
+
+- [ ] `NODE_ENV=production` and a unique `JWT_SECRET` (the server refuses to start with a weak one).
+- [ ] Changed the default admin password; removed demo operator / viewer accounts you do not need.
+- [ ] HTTPS in front of the app; `CLIENT_ORIGIN` set to the public URL.
+- [ ] `server/data` (or the Docker volume) is backed up — it holds users, incidents, audit and learning.
+- [ ] `LOG_LEVEL=info` (use `debug` only while troubleshooting).
+- [ ] Optional: `AI_PROVIDER=claude` with `ANTHROPIC_API_KEY` stored only in the server environment.
+- [ ] Ports `SERVICE_BASE_PORT … +2` are free on the host (demo services bind to 127.0.0.1 only).
