@@ -52,10 +52,10 @@ export default function ReportsPage() {
           <DonutChart data={data.byType} />
         </Card>
         <Card title="By root cause">
-          <HorizontalBars data={data.byRootCause} />
+          <HorizontalBars data={data.byRootCause} humanizeNames={false} />
         </Card>
         <Card title="By service">
-          <HorizontalBars data={data.byService} />
+          <HorizontalBars data={data.byService} humanizeNames={false} />
         </Card>
       </div>
       <Card title="Recovery action effectiveness" subtitle="What the learning model has observed" flush>
