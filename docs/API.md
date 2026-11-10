@@ -71,3 +71,15 @@ curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/cha
 | GET | `/metrics/overview` | V | KPIs: healthy services, active incidents, MTTR, success & autonomous rates, availability |
 | GET | `/logs?source=&level=&search=&limit=` | V | Recent log lines (max 1 000) |
 | GET | `/reports/summary?days=7&tz=330` | V | Daily trend, distributions by type / service / severity / root cause, action effectiveness |
+
+## Administration
+
+| Method | Path | Role | Description |
+|---|---|---|---|
+| GET | `/settings` | V | Current settings, action ids, whether an AI key is configured |
+| PUT | `/settings` | A | Partial update (deep merge, strictly validated) |
+| POST | `/settings/reset` | A | Restore defaults |
+| GET · POST | `/users` | A | List / create `{ name, email, password, role }` |
+| PATCH · DELETE | `/users/:id` | A | `{ name?, role?, active? }` / delete (not yourself, not the last admin) |
+| POST | `/users/:id/reset-password` | A | `{ password }` |
+| GET | `/audit?actor=&action=&limit=&offset=` | A | Audit trail, newest first |
