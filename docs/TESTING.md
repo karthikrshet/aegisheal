@@ -40,3 +40,14 @@ The e2e suite starts the real `order-service` child process on port 5711 and nee
 | `components.test.jsx` | Button, ProgressBar, EmptyState, Modal (Escape), Toggle, badges, Sparkline |
 | `pipeline.test.jsx` | 7 steps, statuses and details render accessibly |
 | `login.test.jsx` | client validation, server error display, demo account fill |
+
+## Manual verification checklist
+
+Performed in the browser before release (see `docs/PROGRESS.md`):
+
+- [x] Login with each demo role; viewer cannot inject faults or open admin pages.
+- [x] Guided demo: 3 simultaneous failures, 3 different diagnoses, all resolved in 2–4 s.
+- [x] Supervised mode: proposal → approve → recovered, toast + sidebar badge.
+- [x] Every fault type in the chaos lab recovers (crash, leak, CPU, latency, dependency, jobs, bad deploy).
+- [x] Production build served by the API on one port with strict CSP and Secure cookies.
+- [x] Responsive layout at phone width (sidebar becomes a drawer).
