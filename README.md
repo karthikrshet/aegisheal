@@ -220,3 +220,14 @@ aegisheal/
 ├── CLAUDE.md / AGENTS.md   rules for AI coding assistants
 └── Dockerfile, docker-compose.yml, .github/workflows/ci.yml
 ```
+
+## 🧪 Testing
+
+```bash
+npm test
+```
+
+- **Server (≈130 tests):** detection rules, analyser, guardrails, learning, store, auth, API security, and **real end-to-end tests** that crash / break real processes and assert the agent recovers them.
+- **Client (≈33 tests):** formatters, API client, permissions, UI components, pipeline, login.
+
+See [docs/TESTING.md](docs/TESTING.md).
