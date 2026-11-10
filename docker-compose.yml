@@ -1,0 +1,19 @@
+# docker compose up --build   →   http://localhost:4000
+services:
+  aegisheal:
+    build: .
+    ports:
+      - "4000:4000"
+    environment:
+      # Change this! Generate with: node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
+      JWT_SECRET: ${JWT_SECRET:?Set JWT_SECRET in your shell or a .env file next to docker-compose.yml}
+      ADMIN_EMAIL: ${ADMIN_EMAIL:-admin@aegisheal.local}
+      ADMIN_PASSWORD: ${ADMIN_PASSWORD:-Admin@12345}
+      AI_PROVIDER: ${AI_PROVIDER:-local}
+      ANTHROPIC_API_KEY: ${ANTHROPIC_API_KEY:-}
+      CLIENT_ORIGIN: http://localhost:4000
+    volumes:
+      - aegis-data:/data
+    restart: unless-stopped
+volumes:
+  aegis-data:
