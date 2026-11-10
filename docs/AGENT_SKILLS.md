@@ -46,3 +46,16 @@
 | Escalation | hands over to a human with the reason when it cannot fix the problem |
 | Incident history | every step, decision, action, probe and note is stored |
 | Self-recovery detection | closes incidents when a service recovers on its own |
+
+## Part B — Claude Code skills in this repository
+
+Located in [`.claude/skills/`](../.claude/skills). An assistant such as Claude Code loads them automatically when the task matches.
+
+| Skill | Use it when |
+|---|---|
+| `run-aegisheal` | starting the app, running the demo or checking that it works |
+| `add-recovery-action` | adding a new predefined recovery action end to end |
+| `add-failure-signature` | teaching the agent a new failure type (rule + signature + tests) |
+| `release-checklist` | preparing a release / submission: tests, docs, progress, secrets check |
+
+Each skill lists the exact files to touch, the tests to add and the restrictions from [AGENT_RESTRICTIONS.md](AGENT_RESTRICTIONS.md).
