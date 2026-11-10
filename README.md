@@ -146,6 +146,8 @@ Wait for `AegisHeal API listening on http://localhost:4000` and `Local: http://l
 
 A full viva / presentation script is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
 
+🎥 **Demo video:** a 3-minute cinematic walkthrough (narrated, with soundtrack) can be regenerated with [tools/demo-video](tools/demo-video/README.md). Upload the rendered `media/AegisHeal-Demo.mp4` to YouTube or GitHub Releases rather than committing it.
+
 ## 🧰 Everyday commands
 
 | Command | What it does |
