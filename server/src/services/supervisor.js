@@ -96,7 +96,7 @@ export class Supervisor extends EventEmitter {
     svc.exitCode = null;
     this.setStatus(svc, 'starting');
 
-    const child = spawn(process.execPath, [SERVICE_SCRIPT], {
+    const child = spawn(process.execPath, ['--expose-gc', SERVICE_SCRIPT], {
       env: {
         PATH: process.env.PATH,
         SystemRoot: process.env.SystemRoot,
