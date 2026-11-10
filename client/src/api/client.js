@@ -48,6 +48,10 @@ export async function request(path, { method = 'GET', body, signal, raw = false 
   }
 
   if (!res.ok) {
+    // The dev proxy answers 5xx with an empty body when the API process is down.
+    if (!data && res.status >= 500) {
+      throw new ApiError(res.status, 'Cannot reach the AegisHeal server. Is it running? (npm run dev)', { code: 'NETWORK' });
+    }
     if (res.status === 401 && !path.startsWith('/auth/login')) onUnauthorized();
     const e = data?.error || {};
     throw new ApiError(res.status, e.message || `Request failed (${res.status})`, { code: e.code, details: e.details });
