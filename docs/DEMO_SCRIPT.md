@@ -26,3 +26,11 @@ Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **
    - Attempt 1: rolled back 3.2.0 → 3.1.4; verification 3/3 healthy checks.
    - MTTR ≈ 2–3 s.
 4. Mention the different root causes and actions for the other two incidents.
+
+## 4. Human in the loop & guardrails (2 min)
+
+1. Agent control → **Supervised**.
+2. Chaos lab → **Failing jobs** on Payment Service.
+3. Sidebar badge shows 1 pending approval → open it → *The agent proposes: Retry failed operations* → **Approve & run** → resolved.
+4. Show the guardrails list (whitelist, confidence, cooldown, circuit breaker, blast radius) and Settings.
+5. Switch back to **Autonomous**.
