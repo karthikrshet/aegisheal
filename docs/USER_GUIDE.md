@@ -14,3 +14,7 @@ Use the e-mail and password created by `npm run seed`, or click **Use** next to 
 - **Service cards** — live response time, CPU, memory, uptime and a sparkline; a red badge links to an open incident.
 - **Charts** — live response time of each service and host CPU / memory.
 - **Recent incidents** and **Agent activity** feed.
+
+## Services → service detail
+
+Tabs: **Overview** (live charts with threshold lines, process details), **Recovery & deploy** (run any predefined action manually, deploy a version), **Chaos** (inject faults), **Logs** (live stream) and **Deployments** (history incl. rollbacks). Admins can stop / start a service — a stopped service is treated as maintenance and ignored by the agent.
