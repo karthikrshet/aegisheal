@@ -25,26 +25,7 @@ export default function AboutPage() {
     <>
       <PageHeader title="About this project" description="Agentic AI-Enabled Autonomous Framework for Intelligent Software Fault Recovery and Resilience" />
       <div className="grid grid-2">
-        <Card title="Project details">
-          <dl className="kv">
-            <dt>Candidate</dt>
-            <dd>AegisHeal team</dd>
-            <dt>Guide</dt>
-            <dd>Project guide</dd>
-            <dt>Coordinators</dt>
-            <dd>Project team</dd>
-            <dt>Institution</dt>
-            <dd>Independent project</dd>
-            <dt>Subject</dt>
-            <dd>Software engineering project</dd>
-          </dl>
-          <div className="divider" />
-          <p className="small">
-            Unlike traditional monitoring that only detects and alerts, AegisHeal focuses on <strong>automated recovery with verification</strong> — the gap
-            this project addresses — and keeps an incident history the agent learns from.
-          </p>
-        </Card>
-        <Card title="Objectives">
+        <Card title="Objectives" className="span-2">
           <ul className="evidence">
             {OBJECTIVES.map((o) => (
               <li key={o} style={{ marginBottom: 6 }}>
