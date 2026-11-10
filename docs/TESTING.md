@@ -51,3 +51,9 @@ Performed in the browser before release (see `docs/PROGRESS.md`):
 - [x] Every fault type in the chaos lab recovers (crash, leak, CPU, latency, dependency, jobs, bad deploy).
 - [x] Production build served by the API on one port with strict CSP and Secure cookies.
 - [x] Responsive layout at phone width (sidebar becomes a drawer).
+
+## Writing new tests
+
+- Use `makeApp({ services: [...], basePort })` from `tests/helpers.js` for API tests — it is in-memory and isolated.
+- Use a unique `basePort` per e2e file so suites never collide.
+- Prefer asserting on incident state (`engine.incidents.get(id)`) over timing.
