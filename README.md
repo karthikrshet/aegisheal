@@ -131,3 +131,17 @@ Wait for `AegisHeal API listening on http://localhost:4000` and `Local: http://l
 > 🔐 Change the admin password after the first login (top-right avatar → *Change password*).
 
 **8. Stop** — press `Ctrl + C` in the terminal.
+
+## 🎬 Try the self-healing demo (2 minutes)
+
+1. Sign in as **admin** and keep the **Dashboard** open.
+2. Go to **Chaos lab** → click **Run guided demo** → **Start demo**. Three real failures are injected at once:
+   - API Gateway **crashes** → agent diagnoses *Application crash* → **restarts** it.
+   - Order Service **leaks memory** → *Memory leak* → **clears the cache**.
+   - Payment Service gets a **faulty release** → *Faulty deployment* → **rolls back**.
+3. Watch the 7-step pipeline light up and the toasts confirm each recovery (typically 2–5 s each).
+4. Open **Incidents** → click an incident to see the AI analysis, evidence, actions, verification probes and timeline.
+5. Go to **Agent control** → switch to **Supervised**, inject a fault again and **approve** the proposed action yourself.
+6. Check **Reports** for MTTR, success rate and action effectiveness, and **Playbooks** for what the agent learned.
+
+A full viva / presentation script is in [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md).
