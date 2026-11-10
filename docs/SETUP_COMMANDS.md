@@ -145,3 +145,14 @@ npm run dev
 | Production mode (one port, :4000) | `npm start` |
 | Get the latest code | `git pull` then `npm install` |
 | Start from a clean database | `npm run reset-data -- --yes` then `npm run seed` |
+
+## Using an AI coding assistant (prompts)
+
+If you use Claude Code (or a similar assistant) in this folder, these prompts work well — the assistant reads `CLAUDE.md` and the skills in `.claude/skills` automatically:
+
+1. `Set up this project and start it` — installs, creates .env, seeds and runs the app.
+2. `Run the self-healing demo and tell me the MTTR of each incident`
+3. `Run all tests and fix anything that fails`
+4. `Add a new recovery action that <does X>` — follows the *add-recovery-action* skill.
+5. `Teach the agent a new failure type: <describe symptom>` — follows *add-failure-signature*.
+6. `Prepare the project for submission` — follows *release-checklist*.
