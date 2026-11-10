@@ -40,3 +40,15 @@ curl -c cookies.txt -H "Content-Type: application/json" \
 ```bash
 curl -b cookies.txt -X POST http://localhost:4000/api/services/order-service/chaos/crash
 ```
+
+## Incidents
+
+| Method | Path | Role | Description |
+|---|---|---|---|
+| GET | `/incidents?status=&severity=&serviceId=&q=&page=&limit=` | V | Paginated list (`status=active` for open ones) |
+| GET | `/incidents/export.csv` | V | Full history as CSV (formula-injection safe) |
+| GET | `/incidents/:id` | V | Full incident: steps, anomalies, context, analysis, decision, attempts, timeline, notes |
+| POST | `/incidents/:id/approve` | O | `{ actionId? }` — run the proposed (or chosen) action |
+| POST | `/incidents/:id/reject` | O | `{ reason? }` |
+| POST | `/incidents/:id/resolve` | O | `{ note? }` — mark as manually resolved |
+| POST | `/incidents/:id/notes` | O | `{ text }` |
