@@ -23,7 +23,7 @@ cd $HOME\Documents
 
 ```powershell
 # 4. Download AegisHeal
-git clone https://github.com/<your-username>/aegisheal.git
+git clone https://github.com/karthikrshet/aegisheal.git
 ```
 
 ```powershell
@@ -73,7 +73,7 @@ cd ~/Documents
 ```
 
 ```bash
-git clone https://github.com/<your-username>/aegisheal.git
+git clone https://github.com/karthikrshet/aegisheal.git
 ```
 
 ```bash
@@ -112,7 +112,7 @@ node -v
 ```
 
 ```bash
-git clone https://github.com/<your-username>/aegisheal.git
+git clone https://github.com/karthikrshet/aegisheal.git
 ```
 
 ```bash
