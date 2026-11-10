@@ -27,3 +27,21 @@ AegisHeal is a Node.js monorepo with two npm workspaces: `server` (API + autonom
   │  :5101     │ │  :5102     │ │  :5103     │
   └────────────┘ └────────────┘ └────────────┘   real child processes (demoService.js)
 ```
+
+## Components
+
+| Layer | Module | Responsibility |
+|---|---|---|
+| Composition | `server/src/engine.js` | Wires every component; `inMemory` mode for tests |
+| HTTP | `server/src/app.js`, `routes/*`, `middleware/*` | REST API, SSE, security middleware |
+| DevOps automation | `services/supervisor.js` | Spawn, stop, restart, deploy, roll back; authenticated admin calls to services |
+| Managed apps | `services/targets/demoService.js` | Dependency-free HTTP service with real fault injection and admin (recovery) endpoints |
+| Step 1 Monitoring | `monitoring/monitor.js`, `probe.js`, `systemMetrics.js` | 2 s loop, bounded history (300 samples), host CPU/memory |
+| Step 2 Detection | `detection/rules.js`, `detector.js` | 7 rules with evidence; detection baseline after recovery |
+| Step 3 Collection | `collection/logStore.js`, `collector.js` | Per-service ring buffers of logs; evidence bundle |
+| Step 4 Analysis | `agent/knowledgeBase.js`, `localAnalyzer.js`, `llmAnalyzer.js`, `analyzer.js` | Signature scoring, optional Claude, second opinion |
+| Step 5 Decision | `agent/learning.js`, `guardrails.js`, `orchestrator.js` | Ranking, policy checks, approvals |
+| Step 6 Recovery | `recovery/actions/*`, `executor.js` | Frozen whitelist of 6 actions with preconditions and timeouts |
+| Step 7 Verification | `verification/verifier.js` | N consecutive fully healthy probes |
+| History | `incidents/incidentRepository.js`, `audit/auditService.js` | Incidents with steps + timeline; audit trail |
+| Persistence | `lib/store.js` | In-memory JSON documents, debounced atomic flush, corruption backup, caps |
