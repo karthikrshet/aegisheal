@@ -1,0 +1,12 @@
+[
+ {"id":"intro","text":"Every minute of downtime costs trust. Services crash. Memory leaks. Deployments break. And somewhere, an engineer is woken up to fix it by hand. What if software could heal itself?"},
+ {"id":"title","text":"Introducing AegisHeal. An agentic A.I. framework for autonomous software fault recovery and resilience."},
+ {"id":"login","text":"It begins with a secure sign in. Role based access gives admins, operators and viewers exactly the control they need."},
+ {"id":"dashboard","text":"This is the control center. Every service is monitored in real time: health, response time, C.P.U. and memory, streamed live every two seconds. At its heart is a seven step agent pipeline. Monitor. Detect. Collect. Analyse. Decide. Recover. And verify."},
+ {"id":"chaos","text":"To prove it works, we break things on purpose. These are real processes, and these are real faults. With one click, the guided demo crashes the A.P.I. gateway, leaks memory in the order service, and ships a faulty release to payments. All at once."},
+ {"id":"recover","text":"Now, watch the agent respond. It detects each failure, gathers the logs and metrics, and reasons about the root cause. Three different problems. Three different diagnoses. Three different fixes. Restart. Clear the cache. Roll back. Each one verified healthy, in seconds."},
+ {"id":"incident","text":"Every decision is explainable. Here, the agent saw an error spike right after a new deployment, with fresh stack traces in the logs. Ninety five percent confidence: a faulty release. It rolled back to the last known good version, then proved the recovery with three consecutive healthy checks."},
+ {"id":"supervised","text":"Autonomy is a choice, not a risk. In supervised mode, the agent proposes, and a human approves. Whitelisted actions, confidence thresholds, cooldowns, circuit breakers and blast radius limits keep every move safe."},
+ {"id":"learn","text":"And it learns. Every outcome updates the playbooks, so the most effective action rises to the top. Reports track mean time to recovery, success rate, and the downtime you never had."},
+ {"id":"outro","text":"AegisHeal. Detect. Diagnose. Recover. Verify. Software that heals itself."}
+]
