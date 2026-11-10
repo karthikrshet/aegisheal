@@ -33,3 +33,10 @@ Durable knowledge about AegisHeal for future maintainers and AI assistants: deci
 - Server: ESM, zod for every input, `AppError` helpers, no `console.log` (use `createLogger`).
 - Client: function components, `useApi` for data, `useLiveEvent` for realtime, tokens from `styles/tokens.css`, icons from `react-icons/fi`.
 - Tests next to the layer they cover: `server/tests/*.test.js`, `client/src/test/*`.
+
+## Where things are tracked
+
+- Completion status and verification log → [PROGRESS.md](PROGRESS.md)
+- Agent capabilities and Claude skills → [AGENT_SKILLS.md](AGENT_SKILLS.md)
+- Restrictions for the agent and for AI assistants → [AGENT_RESTRICTIONS.md](AGENT_RESTRICTIONS.md)
+- Assistant instructions → [`CLAUDE.md`](../CLAUDE.md)
