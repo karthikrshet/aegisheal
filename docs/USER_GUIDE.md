@@ -18,3 +18,14 @@ Use the e-mail and password created by `npm run seed`, or click **Use** next to 
 ## Services → service detail
 
 Tabs: **Overview** (live charts with threshold lines, process details), **Recovery & deploy** (run any predefined action manually, deploy a version), **Chaos** (inject faults), **Logs** (live stream) and **Deployments** (history incl. rollbacks). Admins can stop / start a service — a stopped service is treated as maintenance and ignored by the agent.
+
+## Incidents
+
+Search by number, service or cause; filter by status and severity; export everything as CSV. Click a row for the detail page:
+
+- **Approval bar** (supervised / observe / escalated) — pick an action and **Approve & run**, or **Reject**.
+- **Self-healing pipeline** with the detail of each step.
+- **AI root-cause analysis** — diagnosis, confidence bar, evidence, recommended playbook, alternatives.
+- **Recovery attempts** — each action, its output and the verification probes.
+- **Collected evidence** — process state, metrics and the log excerpt the agent analysed.
+- **Timeline** and **Notes** for the team; **Mark as resolved** for fixes done outside AegisHeal.
