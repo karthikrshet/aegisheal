@@ -135,7 +135,9 @@ const admin = {
     clearInterval(state.leakTimer);
     state.leakTimer = null;
     state.leak = [];
-    if (global.gc) global.gc();
+    // Backing stores of freed Buffers are released on the GC *after* the one
+    // that finds them unreachable, so collect a few times over the next second.
+    if (global.gc) [0, 50, 500].forEach((ms) => setTimeout(() => global.gc(), ms));
     log('info', `Cache cleared, eviction policy re-enabled (${freed} MB released)`);
     return { freedMB: freed };
   },
