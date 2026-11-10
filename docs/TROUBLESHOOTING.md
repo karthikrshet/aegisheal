@@ -40,3 +40,13 @@
 | Start with an empty database | stop the app → `npm run reset-data -- --yes` → `npm run seed` |
 | Forgot the admin password | same as above (deletes all data) |
 | Database file corrupted | AegisHeal keeps `aegisheal.json.corrupt-<time>` and starts fresh automatically |
+
+## Claude AI provider
+
+| Symptom | Fix |
+|---|---|
+| Agent page says *API key missing — using local* | set `ANTHROPIC_API_KEY` in `server/.env` and restart |
+| Server log: *Invalid ANTHROPIC_API_KEY* | create a new key in the Anthropic console |
+| Analysis engine shows *local (Claude unavailable)* | network, rate limit or invalid response — the local engine was used; recovery still works |
+
+Still stuck? Run with `LOG_LEVEL=debug` in `server/.env` and look at the terminal output.
