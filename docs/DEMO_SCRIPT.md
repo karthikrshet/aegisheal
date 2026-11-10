@@ -15,3 +15,14 @@ Show **About project** → objectives and the 7-step methodology.
 ## 2. Architecture (1 min)
 
 Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **real separate processes** (show their PIDs on a service page), so crashes and rollbacks are real.
+
+## 3. Autonomous recovery (3 min)
+
+1. Chaos lab → **Run guided demo** → Start.
+2. Switch to the Dashboard: three incidents appear, the pipeline animates, toasts report "resolved" in a few seconds.
+3. Open the **Faulty deployment** incident:
+   - Evidence: error spike, recent deployment of v3.2.0, new stack traces.
+   - Diagnosis 95 % confidence → playbook *rollback → restart*.
+   - Attempt 1: rolled back 3.2.0 → 3.1.4; verification 3/3 healthy checks.
+   - MTTR ≈ 2–3 s.
+4. Mention the different root causes and actions for the other two incidents.
