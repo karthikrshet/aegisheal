@@ -69,3 +69,7 @@ Only one active incident exists per service. New symptoms on the same service ar
 | `learning` | `{ [signatureId]: { [actionId]: { attempts, successes, totalRecoveryMs } } }` |
 | `settings` | agentMode, thresholds, guardrails, allowedActions, ai |
 | `meta` | incidentCounter, agentPaused |
+
+## Real-time updates
+
+`lib/eventBus.js` is a process-wide emitter. Components publish `metrics`, `incident`, `service`, `agent`, `log`, `settings` and `audit` events; `routes/events.js` streams them to every signed-in browser over SSE (max 50 clients, 15 s heartbeat). The client keeps a single `EventSource` in `LiveContext` and components subscribe with `useLiveEvent(type, fn)`.
