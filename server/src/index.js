@@ -18,7 +18,7 @@ async function main() {
     logger.info(`AegisHeal API listening on http://localhost:${config.port}`);
   });
   server.on('error', (err) => {
-    logger.error(err.code === 'EADDRINUSE' ? `Port ${config.port} is already in use. Change PORT in server/.env` : err.message);
+    logger.error(err.code === 'EADDRINUSE' ? `Port ${config.port} is already in use. Change API_PORT in server/.env` : err.message);
     process.exit(1);
   });
 

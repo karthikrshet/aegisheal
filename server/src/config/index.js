@@ -14,7 +14,8 @@ const toInt = (fallback) =>
 
 const schema = z.object({
   NODE_ENV: z.enum(['development', 'production', 'test']).default('development'),
-  PORT: toInt(4000).pipe(z.number().min(1).max(65535)),
+  // API_PORT (not PORT) so tools that export PORT for other apps never collide with the API.
+  API_PORT: toInt(4000).pipe(z.number().min(1).max(65535)),
   CLIENT_ORIGIN: z.string().default('http://localhost:5173'),
   JWT_SECRET: z.string().optional(),
   JWT_EXPIRES_IN: z.string().default('8h'),
@@ -53,7 +54,7 @@ function loadConfig(env = process.env) {
     env: c.NODE_ENV,
     isProd: c.NODE_ENV === 'production',
     isTest: c.NODE_ENV === 'test',
-    port: c.PORT,
+    port: c.API_PORT,
     clientOrigin: c.CLIENT_ORIGIN.split(',').map((s) => s.trim()).filter(Boolean),
     jwtSecret,
     jwtSecretGenerated: weak,

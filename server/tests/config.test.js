@@ -21,7 +21,7 @@ describe('config', () => {
   });
 
   it('reports invalid values clearly', () => {
-    expect(() => loadConfig({ PORT: 'abc' })).toThrow(/PORT/);
+    expect(() => loadConfig({ API_PORT: 'abc' })).toThrow(/API_PORT/);
     expect(() => loadConfig({ AGENT_MODE: 'yolo' })).toThrow(/AGENT_MODE/);
     expect(() => loadConfig({ MONITOR_INTERVAL_MS: '10' })).toThrow(/MONITOR_INTERVAL_MS/);
   });
