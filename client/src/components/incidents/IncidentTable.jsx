@@ -7,7 +7,7 @@ export function IncidentTable({ items = [], compact = false }) {
   const navigate = useNavigate();
   return (
     <div className="table-wrap">
-      <table className="table">
+      <table className="table" style={{ minWidth: compact ? 560 : 900 }}>
         <thead>
           <tr>
             <th>Incident</th>
@@ -31,7 +31,9 @@ export function IncidentTable({ items = [], compact = false }) {
               aria-label={`Open ${i.number}`}
             >
               <td>
-                <div style={{ fontWeight: 650 }}>{i.number}</div>
+                <div className="nowrap" style={{ fontWeight: 650 }}>
+                  {i.number}
+                </div>
                 <div className="small muted">{humanize(i.type)}</div>
               </td>
               <td className="nowrap">{i.serviceName}</td>
@@ -42,7 +44,7 @@ export function IncidentTable({ items = [], compact = false }) {
                 <StatusBadge status={i.status} />
               </td>
               {!compact && (
-                <td style={{ maxWidth: 320 }}>
+                <td style={{ minWidth: 220, maxWidth: 340 }}>
                   <span className="small">{i.rootCause || <span className="faint">Analyzing…</span>}</span>
                 </td>
               )}
