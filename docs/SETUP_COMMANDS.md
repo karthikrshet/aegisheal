@@ -135,6 +135,20 @@ npm run seed
 npm run dev
 ```
 
+## Your own `.env` (optional)
+
+`npm run setup` already created `server/.env`. To set your own values instead, copy the template and edit it:
+
+```powershell
+Copy-Item .env.example .env
+```
+
+```bash
+cp .env.example .env
+```
+
+Open `.env`, change `JWT_SECRET`, `ADMIN_EMAIL`, `ADMIN_PASSWORD` (and optionally `ANTHROPIC_API_KEY`), save, and restart `npm run dev`. Never commit `.env`.
+
 ## After installation
 
 | Goal | Command |
