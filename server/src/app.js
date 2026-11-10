@@ -6,6 +6,7 @@ import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import { SERVER_ROOT } from './config/index.js';
 import { requestId } from './middleware/requestId.js';
+import { requestLogger } from './middleware/requestLogger.js';
 import { authenticate } from './middleware/auth.js';
 import { createLimiters, requireJsonForMutations } from './middleware/security.js';
 import { errorHandler, notFoundHandler } from './middleware/errorHandler.js';
@@ -30,6 +31,7 @@ export function createApp(engine) {
   app.disable('x-powered-by');
   app.set('trust proxy', 'loopback');
   app.use(requestId);
+  app.use(requestLogger);
   app.use(
     helmet({
       contentSecurityPolicy: {
