@@ -52,3 +52,16 @@ Full details: [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) and [docs/AGENT_DESIG
 Nothing else is needed: no database server, no Docker, no API key. The JSON database is created automatically.
 
 Free ports used by default: **5173** (dashboard), **4000** (API), **5101-5103** (demo services). All can be changed in `server/.env`.
+
+## 🚀 Quick start (5 commands)
+
+```bash
+git clone https://github.com/<your-username>/aegisheal.git
+cd aegisheal
+npm run bootstrap
+npm run dev
+```
+
+Then open **http://localhost:5173** and sign in with `admin@aegisheal.local` / `Admin@12345`.
+
+`npm run bootstrap` = install all packages → create `server/.env` with a random secret → create demo accounts.
