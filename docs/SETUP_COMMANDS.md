@@ -95,3 +95,42 @@ npm run seed
 ```bash
 npm run dev
 ```
+
+## Linux (Ubuntu / Debian)
+
+```bash
+# Node.js 20 from NodeSource
+curl -fsSL https://deb.nodesource.com/setup_20.x | sudo -E bash -
+```
+
+```bash
+sudo apt-get install -y nodejs git
+```
+
+```bash
+node -v
+```
+
+```bash
+git clone https://github.com/<your-username>/aegisheal.git
+```
+
+```bash
+cd aegisheal
+```
+
+```bash
+npm install
+```
+
+```bash
+npm run setup
+```
+
+```bash
+npm run seed
+```
+
+```bash
+npm run dev
+```
