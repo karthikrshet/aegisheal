@@ -42,6 +42,8 @@ export function createApp(engine) {
           imgSrc: ["'self'", 'data:'],
           connectSrc: ["'self'"],
           frameAncestors: ["'none'"],
+          // Only force HTTPS sub-requests when the site is actually served over HTTPS.
+          upgradeInsecureRequests: config.cookieSecure ? [] : null,
         },
       },
       crossOriginEmbedderPolicy: false,
