@@ -30,3 +30,6 @@ Thumbs.db
 
 # Local-only AI assistant settings
 .claude/settings.local.json
+
+# Demo video renders (large binaries, not source)
+media/
