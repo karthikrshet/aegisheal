@@ -16,3 +16,19 @@ Overall completion: **100 % of synopsis scope** + extra features. Legend: ✅ do
 | Verify the success of recovery | ✅ | `verification/verifier.js`, probes shown in UI |
 | Reduce manual troubleshooting & downtime | ✅ | MTTR 2–4 s in demo; reports page |
 | Maintain incident history | ✅ | incident store, timeline, CSV export |
+
+## Milestones
+
+| # | Milestone | Status |
+|---|---|---|
+| M1 | Repo scaffold, plan, conventions | ✅ |
+| M2 | Core libs: config, logger, JSON store, auth | ✅ |
+| M3 | Managed services + supervisor (DevOps layer) | ✅ |
+| M4 | Monitoring + detection | ✅ |
+| M5 | AI agent: analysis, decision, guardrails, learning | ✅ |
+| M6 | Recovery executor, verification, incidents, audit | ✅ |
+| M7 | REST API, SSE, security hardening | ✅ |
+| M8 | React dashboard (white & blue, react-icons) | ✅ |
+| M9 | Tests: 110 server + 33 client | ✅ |
+| M10 | Docs, setup script, Docker, CI | ✅ (Docker/CI 🟡 — files written, not executed on this machine) |
+| M11 | Demo video | in progress |
