@@ -33,3 +33,7 @@ Search by number, service or cause; filter by status and severity; export everyt
 ## Agent control
 
 Choose **Autonomous**, **Supervised** or **Observe only** (admin), pause / resume the agent, see pending approvals, circuit breakers (reset them after fixing a root cause) and the full list of guardrails.
+
+## Playbooks
+
+The agent's knowledge: each failure signature, its root cause and the ranked recovery actions with learned success rates and average recovery time.
