@@ -282,3 +282,23 @@ git status
 | Forgot admin password | Stop the app, run `npm run reset-data -- --yes`, then `npm run seed`. |
 
 More: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
+
+## 📚 Documentation
+
+| Document | For |
+|---|---|
+| [docs/PLAN.md](docs/PLAN.md) | Product plan mapping the synopsis objectives to features |
+| [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md) | System design, components and data flow |
+| [docs/AGENT_DESIGN.md](docs/AGENT_DESIGN.md) | How the AI agent analyses, decides, acts, verifies and learns |
+| [docs/AGENT_RESTRICTIONS.md](docs/AGENT_RESTRICTIONS.md) | Guardrails of the product agent and rules for AI coding assistants |
+| [docs/AGENT_SKILLS.md](docs/AGENT_SKILLS.md) | Agent capabilities and the Claude Code skills in `.claude/skills` |
+| [docs/API.md](docs/API.md) | REST + SSE API reference |
+| [docs/USER_GUIDE.md](docs/USER_GUIDE.md) | Using every screen of the dashboard |
+| [docs/SETUP_COMMANDS.md](docs/SETUP_COMMANDS.md) | Copy-paste install commands for Windows, macOS and Linux |
+| [docs/DEMO_SCRIPT.md](docs/DEMO_SCRIPT.md) | Viva / presentation walkthrough |
+| [docs/TESTING.md](docs/TESTING.md) | Test strategy and how to run tests |
+| [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md) | Production, Docker and hardening checklist |
+| [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md) | Common problems and fixes |
+| [docs/PROGRESS.md](docs/PROGRESS.md) | What is complete, verified and planned |
+| [docs/MEMORY.md](docs/MEMORY.md) | Project memory: decisions, gotchas and lessons learned |
+| [SECURITY.md](SECURITY.md) · [CONTRIBUTING.md](CONTRIBUTING.md) · [CHANGELOG.md](CHANGELOG.md) | Policies and history |
