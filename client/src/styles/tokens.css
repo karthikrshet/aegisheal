@@ -1,0 +1,53 @@
+/* AegisHeal design tokens — white surfaces, blue primary */
+:root {
+  --blue-50: #eff6ff;
+  --blue-100: #dbeafe;
+  --blue-200: #bfdbfe;
+  --blue-300: #93c5fd;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --blue-700: #1d4ed8;
+  --blue-800: #1e40af;
+  --blue-900: #1e3a8a;
+
+  --primary: var(--blue-600);
+  --primary-hover: var(--blue-700);
+  --primary-soft: var(--blue-50);
+  --primary-ring: rgba(37, 99, 235, 0.25);
+
+  --bg: #f4f7fd;
+  --surface: #ffffff;
+  --surface-alt: #f8fafe;
+  --border: #e2e8f3;
+  --border-strong: #cbd5e6;
+
+  --text: #0f172a;
+  --text-soft: #334155;
+  --muted: #64748b;
+  --faint: #94a3b8;
+
+  --success: #16a34a;
+  --success-soft: #dcfce7;
+  --warning: #d97706;
+  --warning-soft: #fef3c7;
+  --danger: #dc2626;
+  --danger-soft: #fee2e2;
+  --info: #0891b2;
+  --info-soft: #cffafe;
+  --violet: #7c3aed;
+  --violet-soft: #ede9fe;
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.06);
+  --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 6px 16px rgba(30, 64, 175, 0.06);
+  --shadow-lg: 0 12px 40px rgba(30, 64, 175, 0.14);
+
+  --sidebar-w: 248px;
+  --topbar-h: 64px;
+  --font: 'Inter', 'Segoe UI', system-ui, -apple-system, Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --mono: 'JetBrains Mono', 'Cascadia Code', Consolas, 'Courier New', monospace;
+  --ease: cubic-bezier(0.2, 0.8, 0.2, 1);
+}
