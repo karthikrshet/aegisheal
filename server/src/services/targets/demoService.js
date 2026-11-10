@@ -89,7 +89,7 @@ const faults = {
     state.leakTimer = setInterval(() => {
       state.leak.push(Buffer.alloc(8 * 1024 * 1024, 1)); // 8 MB per tick
       if (state.leak.length % 5 === 0) log('warn', `Session cache grew to ${state.leak.length * 8} MB (no eviction)`);
-      if (state.leak.length > 120) clearInterval(state.leakTimer); // hard safety cap ~1 GB
+      if (state.leak.length >= 60) clearInterval(state.leakTimer); // hard safety cap ~480 MB
     }, 400);
     return 'memory leak started';
   },
@@ -182,7 +182,9 @@ function metrics() {
     version: VERSION,
     uptimeSec: Math.round((Date.now() - state.startedAt) / 1000),
     cpuPercent,
-    memoryMB: +(mem.rss / 1048576).toFixed(1),
+    // heap + off-heap buffers: reflects leaks and drops immediately after GC
+    memoryMB: +((mem.heapUsed + mem.external) / 1048576).toFixed(1),
+    rssMB: +(mem.rss / 1048576).toFixed(1),
     heapUsedMB: +(mem.heapUsed / 1048576).toFixed(1),
     cacheMB: state.leak.length * 8,
     errorRate: errorRate(),
