@@ -25,3 +25,26 @@ Implemented in `server/src/agent/guardrails.js`, enforced on every decision, con
 | 15 | **Least-privilege service control** — admin/chaos endpoints of services require a per-run random token and bind to 127.0.0.1 | always on | Nobody else on the network can control services |
 
 Operator approval bypasses 6–9 (a human explicitly took responsibility) but **never** bypasses 1, 2, 10 or 12.
+
+## Part B — Rules for AI coding assistants working on this repo
+
+These rules are also in [`CLAUDE.md`](../CLAUDE.md) so assistants load them automatically.
+
+### Must
+
+- Keep every recovery action inside `server/src/recovery/actions/` and registered in the frozen `ACTIONS` map — never add a code path that executes shell commands from user, log or LLM input.
+- Validate every new API input with a zod schema (`.strict()` for bodies) and enforce the right role with `requireRole`.
+- Add or update tests for any behaviour change; `npm test` must pass before committing.
+- Keep the white & blue design tokens in `client/src/styles/tokens.css`; use `react-icons` for icons.
+- Update `docs/PROGRESS.md` and, for decisions or gotchas, `docs/MEMORY.md`.
+- Write real, non-empty commits with a conventional message (`feat:`, `fix:`, `docs:`, `test:` …).
+
+### Must not
+
+- Commit secrets or local data: `server/.env`, `server/data/*`, API keys, `node_modules`, `client/dist`.
+- Weaken security middleware (helmet CSP, rate limits, JSON-only mutations, cookie flags) or remove an RBAC check.
+- Let the LLM decide anything outside the predefined signature / action enums, or skip schema validation of its output.
+- Make the agent depend on the network: the local analyser must always work offline.
+- Change the supervisor to auto-restart crashed services (recoveries must go through the agent pipeline).
+- Push to a remote, rewrite history or force-push without the project owner's explicit request.
+- Create empty commits or commits that only change whitespace to inflate history.
