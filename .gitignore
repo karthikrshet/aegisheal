@@ -32,4 +32,4 @@ Thumbs.db
 .claude/settings.local.json
 
 # Demo video renders (large binaries, not source)
-media/
+/media/
