@@ -45,3 +45,13 @@ Show the diagram in `docs/ARCHITECTURE.md`. Key point: the three services are **
 - `npm test` — unit, API-security and real end-to-end self-healing tests.
 - Security: RBAC (sign in as viewer → chaos buttons disabled), audit log, validated inputs.
 - Optional Claude analysis with strict validation and offline fallback.
+
+## Likely questions
+
+| Question | Answer |
+|---|---|
+| Is the AI real? | The default engine is an evidence-scoring reasoning engine (explainable, offline). With an API key, Claude analyses the same evidence; its answer is schema-validated and cross-checked. |
+| What if the AI is wrong? | Guardrails: whitelisted actions only, approval on low confidence / high risk, verification, next best action, max attempts, circuit breaker, escalation. |
+| What stops recovery loops? | Cooldowns, max attempts, circuit breaker and the detection baseline after each recovery. |
+| How does it learn? | Success rate per failure signature and action re-ranks the playbook (see Playbooks). |
+| Can it monitor other apps? | Yes: anything exposing `/health` and `/metrics` can be registered in `services/registry.js`. |
