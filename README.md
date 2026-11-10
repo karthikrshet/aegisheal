@@ -231,3 +231,19 @@ npm test
 - **Client (≈33 tests):** formatters, API client, permissions, UI components, pipeline, login.
 
 See [docs/TESTING.md](docs/TESTING.md).
+
+## 🏭 Production & Docker
+
+```bash
+npm start
+```
+
+Serves the built dashboard and API from **http://localhost:4000**. Set `NODE_ENV=production` and a strong `JWT_SECRET` in `server/.env` first.
+
+With Docker:
+
+```bash
+docker compose up --build
+```
+
+See [docs/DEPLOYMENT.md](docs/DEPLOYMENT.md).
