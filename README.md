@@ -189,3 +189,34 @@ Thresholds, guardrails, allowed actions and the AI provider can also be changed 
 3. Restart `npm run dev`. The Agent page shows *Claude (Anthropic) + local second opinion*.
 
 If the key is missing, invalid, rate-limited or the response fails validation, AegisHeal silently falls back to the local engine — recovery never depends on the network.
+
+## 🗂️ Project structure
+
+```
+aegisheal/
+├── client/                 React 18 + Vite dashboard
+│   └── src/
+│       ├── api/            fetch client + endpoint wrappers
+│       ├── components/     ui/, layout/, charts/, agent/, incidents/, services/
+│       ├── context/        Auth, Toast, Live (Server-Sent Events)
+│       ├── hooks/          useApi, useDebounce, useThrottledReload …
+│       ├── pages/          Dashboard, Services, Incidents, Agent, Chaos lab …
+│       ├── styles/         white & blue design tokens and components
+│       └── test/           Vitest + Testing Library
+├── server/                 Node.js + Express API and the agent
+│   ├── src/
+│   │   ├── agent/          knowledge base, analysers, guardrails, learning, orchestrator
+│   │   ├── monitoring/     probes, host metrics, monitor loop
+│   │   ├── detection/      failure rules + detector
+│   │   ├── collection/     log store + evidence collector
+│   │   ├── recovery/       predefined actions + executor
+│   │   ├── verification/   recovery verifier
+│   │   ├── services/       supervisor (DevOps layer) + demo micro-service
+│   │   ├── routes/         REST API + SSE
+│   │   └── …               auth, users, settings, audit, middleware, lib
+│   └── tests/              unit, API and real end-to-end self-healing tests
+├── docs/                   architecture, API, agent design, guides, progress, memory
+├── .claude/                AI-assistant skills and launch config
+├── CLAUDE.md / AGENTS.md   rules for AI coding assistants
+└── Dockerfile, docker-compose.yml, .github/workflows/ci.yml
+```
