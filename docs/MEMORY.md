@@ -14,3 +14,15 @@ Durable knowledge about AegisHeal for future maintainers and AI assistants: deci
 | JSON store with atomic rename | Zero setup for examiners, crash-safe | `lib/store.js` |
 | SSE instead of WebSockets | One-way, cookie-auth friendly, works through Vite proxy | `routes/events.js` |
 | `API_PORT`, not `PORT` | Tools/IDEs export `PORT` for other apps and hijacked the API | `config/index.js` |
+
+## Gotchas (learned the hard way)
+
+- **Freed Buffers are not released by the first GC.** The demo service runs GC at 0, 50 and 500 ms after clearing the cache; memory is measured as `heapUsed + external`, not RSS.
+- **Stale samples re-open incidents.** After a restart or a verified recovery the monitor sets a *detection baseline*; detection ignores older samples. Keep this when changing the monitor.
+- **Rolling error rate outlives the fault.** The service resets its request window on reconnect, and the ERROR_SPIKE rule requires a *sustained* rate.
+- **Rollback target is the last known good version**, updated only after a verified recovery — never "previous version" (would bounce back to the buggy one).
+- **Rate limiters must be per app instance**, otherwise test files share counters.
+- **Vite HMR + React context**: editing a module imported by a context file can show "useAuth must be used inside AuthProvider" in dev until a full reload. Not a production issue.
+- **Without `JWT_SECRET`**, dev uses a secret persisted in `server/data/.jwt-secret`; production refuses to start.
+- **Seed while the server is stopped** — both write the same JSON file.
+- The guided demo injects 3 faults while `maxConcurrentRecoveries` is 2: the third waits — this is the blast-radius guardrail working, not a bug.
