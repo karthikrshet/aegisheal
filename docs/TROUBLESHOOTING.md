@@ -32,3 +32,11 @@
 | Chaos buttons are greyed out | you are a viewer, or the service is stopped |
 | An incident stays **escalated** | the agent could not verify a fix; read the reason, fix manually and click *Mark as resolved*, or approve a different action |
 | Circuit breaker **open** | Agent control → Circuit breakers → **Reset** after fixing the cause |
+
+## Data
+
+| Goal | Command |
+|---|---|
+| Start with an empty database | stop the app → `npm run reset-data -- --yes` → `npm run seed` |
+| Forgot the admin password | same as above (deletes all data) |
+| Database file corrupted | AegisHeal keeps `aegisheal.json.corrupt-<time>` and starts fresh automatically |
