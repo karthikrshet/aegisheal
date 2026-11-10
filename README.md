@@ -269,3 +269,16 @@ Before pushing, double-check nothing private is staged:
 ```bash
 git status
 ```
+
+## 🛠️ Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| `Port 4000 is already in use` | Change `API_PORT` in `server/.env` (dashboard proxy follows it) or close the other program. |
+| Dashboard says *Cannot reach the AegisHeal server* | The API is not running — start it with `npm run dev` and check the terminal for errors. |
+| Services show **Down** right after start | Ports 5101-5103 are busy — change `SERVICE_BASE_PORT`. |
+| Logged out after restarting | Expected only if `JWT_SECRET` changed. Run `npm run setup` once so it stays fixed. |
+| `npm install` fails | Use Node.js 20+ (`node -v`), delete `node_modules` and run `npm install` again. |
+| Forgot admin password | Stop the app, run `npm run reset-data -- --yes`, then `npm run seed`. |
+
+More: [docs/TROUBLESHOOTING.md](docs/TROUBLESHOOTING.md).
